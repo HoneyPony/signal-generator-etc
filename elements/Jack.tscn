@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://elements/jack.svg" type="Texture" id=1]
+[ext_resource path="res://elements/Jack.gd" type="Script" id=2]
+[ext_resource path="res://elements/jack_plugin.png" type="Texture" id=3]
+[ext_resource path="res://sounds/jack/jack.wav" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 68.5573, 13.4274 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Init"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("jack_plugin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Plug"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("jack_plugin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="jack" type="Sprite" parent="."]
+position = Vector2( -157.947, -17.9013 )
+scale = Vector2( 0.125, 0.125 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 0, 1103, 286 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( -0.00915527, -0.0262775 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -68.8291, 0 )
+shape = SubResource( 1 )
+
+[node name="Hotspot" type="Node2D" parent="."]
+position = Vector2( -0.00915527, -0.0262775 )
+
+[node name="CableSrc" type="Position2D" parent="."]
+position = Vector2( -146.953, 0 )
+
+[node name="CableSrc2" type="Position2D" parent="."]
+position = Vector2( -137.87, 0 )
+
+[node name="Cutoff" type="Position2D" parent="."]
+position = Vector2( -137.87, 0 )
+
+[node name="jack_plugin" type="Sprite" parent="."]
+position = Vector2( -90.5578, 1.31886 )
+scale = Vector2( 0.25, 0.25 )
+z_index = 300
+texture = ExtResource( 3 )
+hframes = 9
+frame = 7
+
+[node name="Plugin" type="AnimationPlayer" parent="."]
+autoplay = "Init"
+anims/Init = SubResource( 2 )
+anims/Plug = SubResource( 3 )
+
+[node name="PlugS" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "ModuleSFX"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_mouse_enter"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_mouse_exit"]

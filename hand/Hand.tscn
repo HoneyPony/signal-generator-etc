@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://hand/geom_hand.svg" type="Texture" id=1]
+[ext_resource path="res://hand/Hand.gd" type="Script" id=2]
+
+[node name="Hand" type="Node2D"]
+z_index = 1000
+script = ExtResource( 2 )
+
+[node name="geom_hand" type="Sprite" parent="."]
+position = Vector2( 16.2724, 16.2138 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )

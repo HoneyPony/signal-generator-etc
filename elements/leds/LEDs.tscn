@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://elements/leds/LEDs.gd" type="Script" id=1]
+[ext_resource path="res://elements/ModuleDragger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://elements/JackIn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://elements/switch/SwitchLED.tscn" type="PackedScene" id=4]
+[ext_resource path="res://elements/leds/leds.svg" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 73, 138 )
+
+[node name="LEDS" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="sequencer" type="Sprite" parent="."]
+scale = Vector2( 0.125, 0.125 )
+texture = ExtResource( 6 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ModuleDragger" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ModuleDragger"]
+position = Vector2( 65, 140 )
+shape = SubResource( 1 )
+
+[node name="JackIn" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1.92028, 35 )
+
+[node name="JackIn2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1.92, 105 )
+
+[node name="JackIn3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1.92, 175 )
+
+[node name="JackIn4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1.92, 245 )
+
+[node name="SwitchLED" parent="." instance=ExtResource( 4 )]
+position = Vector2( 105, 35 )
+off_color = Color( 0, 0.129412, 0.294118, 1 )
+on_color = Color( 0.219608, 0.8, 1, 1 )
+
+[node name="SwitchLED2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 105, 105 )
+off_color = Color( 0, 0.129412, 0.294118, 1 )
+on_color = Color( 0.219608, 0.8, 1, 1 )
+
+[node name="SwitchLED3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 105, 175 )
+off_color = Color( 0, 0.129412, 0.294118, 1 )
+on_color = Color( 0.219608, 0.8, 1, 1 )
+
+[node name="SwitchLED4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 105, 245 )
+off_color = Color( 0, 0.129412, 0.294118, 1 )
+on_color = Color( 0.219608, 0.8, 1, 1 )
