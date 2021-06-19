@@ -12,15 +12,15 @@ func get_state():
 		return output_state
 
 	var j = jack_coupling
-	if j == null:
+	if not is_instance_valid(j) or j == null:
 		return default_state
 	
 	j = j.paired_jack
-	if j == null:
+	if not is_instance_valid(j) or j == null:
 		return default_state
 		
 	j = j.plug_coupling
-	if j == null:
+	if not is_instance_valid(j) or j == null:
 		return default_state
 		
 	# we have got the other jackin!
@@ -31,6 +31,10 @@ func get_state():
 func _ready():
 	pass # Replace with function body.
 
+
+func _process(delta):
+	if not is_instance_valid(jack_coupling):
+		jack_coupling = null
 
 func max_x():
 	return $MaxDist.global_position.x
@@ -97,3 +101,4 @@ func _on_area_exited(area):
 	
 	if jack.plug_target == self:
 		jack.plug_target = null
+	

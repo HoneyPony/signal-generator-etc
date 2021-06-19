@@ -13,7 +13,16 @@ const W_MAX = 18
 
 var drop_sign = 1
 
+enum Mode {
+	Spawn,
+	Spawning,
+	Normal
+}
+
+var cur_mode = Mode.Spawn
+
 func _ready():
+	visible = false
 	$Jack1.paired_jack = $Jack2
 	$Jack2.paired_jack = $Jack1
 
@@ -68,9 +77,59 @@ func _draw():
 	
 	draw_polyline(points2, Color(0x1a1a1aff), actual_draw_width * 0.55, true)
 	
+var dist_down_from_camera = 0
 	
+func go_to_camera():
+	var size = get_viewport().size
+	
+	var center_y = GS.camera.global_position.y - size.y * 0.5 * GS.camera_scale_inv
+	
+	var center_x = GS.camera.global_position.x
+	
+	#var dist = 300 * GS.camera_scale_inv
+	
+	dist_down_from_camera += (120 - dist_down_from_camera) * 0.05
+	var dist_scale = dist_down_from_camera * GS.camera_scale_inv + 160
+	
+	$Jack1.global_position = Vector2(center_x, center_y + dist_scale)
+	$Jack1.rotation_degrees = 90
+	$Jack2.global_position = Vector2(center_x, center_y - 400)
+	$Jack2.rotation_degrees = -90
+	
+func move_jack_two():
+	var pos = $Jack1.global_position
+	var dir = polar2cartesian(500, $Jack1.rotation)
+	
+	
+	var target_pos = pos - dir
+	$Jack2.global_position += (target_pos - $Jack2.global_position) * 0.05
+	var target_rot = cartesian2polar(-dir.x, -dir.y).y
+	$Jack2.rotation = lerp_angle($Jack2.rotation, target_rot, 0.05)
+	
+func advance_spawn_state(which):
+	if which == $Jack1 and cur_mode == Mode.Spawn:
+		cur_mode = Mode.Spawning
 
 func _process(delta):
+	
+	if cur_mode == Mode.Spawn:
+		visible = true
+		z_index = 15
+		go_to_camera()
+		
+	if cur_mode == Mode.Spawning:
+		if $Jack1.dragging:
+			z_index = 101
+			move_jack_two()
+		else:
+			cur_mode = Mode.Normal
+			
+	if cur_mode == Mode.Normal:
+		z_index = 101
+		if GS.next_patch_cable == self:
+			GS.next_patch_cable = null
+			GS.may_spawn_patch_cable = true
+	
 	var drop_sign_target = 1
 	
 	if src1.global_position.x > src2.global_position.x:

@@ -1,58 +1,98 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://elements/Jack.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/cable_box.svg" type="Texture" id=1]
 [ext_resource path="res://ModuleProcessor.gd" type="Script" id=2]
 [ext_resource path="res://elements/9patch.svg" type="Texture" id=3]
-[ext_resource path="res://elements/PatchCable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/CableBox.gd" type="Script" id=4]
 [ext_resource path="res://hand/Hand.tscn" type="PackedScene" id=5]
-[ext_resource path="res://grid2.svg" type="Texture" id=6]
-[ext_resource path="res://elements/sequencer/Sequencer8.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ModuleDetector.gd" type="Script" id=6]
+[ext_resource path="res://CaptureMouse.gd" type="Script" id=7]
 [ext_resource path="res://Camera.gd" type="Script" id=8]
-[ext_resource path="res://elements/leds/LEDs.tscn" type="PackedScene" id=9]
+[ext_resource path="res://font/PoiretOne.tres" type="DynamicFont" id=9]
 [ext_resource path="res://BGGrid.gd" type="Script" id=10]
-[ext_resource path="res://elements/gates/ORGate.tscn" type="PackedScene" id=11]
-[ext_resource path="res://moon/Moon1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ui/RunButton.gd" type="Script" id=11]
+[ext_resource path="res://ui/trash_2.svg" type="Texture" id=12]
 [ext_resource path="res://ui/panel_grip.svg" type="Texture" id=13]
 [ext_resource path="res://ui/PanelGrip.gd" type="Script" id=14]
-[ext_resource path="res://elements/outputs/MotorOut.tscn" type="PackedScene" id=15]
+[ext_resource path="res://font/PoiretOne32.tres" type="DynamicFont" id=15]
 [ext_resource path="res://AlwaysSizeViewport.gd" type="Script" id=16]
-[ext_resource path="res://elements/signalgen/SignalGen.tscn" type="PackedScene" id=17]
-[ext_resource path="res://font/poiret-one/PoiretOne-Regular.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://WinUI.gd" type="Script" id=17]
+[ext_resource path="res://MoonViewport.gd" type="Script" id=18]
+[ext_resource path="res://ui/PartsBinInner.tscn" type="PackedScene" id=19]
+[ext_resource path="res://LayerFollowCamera.gd" type="Script" id=20]
+[ext_resource path="res://grid2.svg" type="Texture" id=21]
+[ext_resource path="res://ui/ModuleTrash.gd" type="Script" id=22]
 
-[sub_resource type="DynamicFont" id=1]
-size = 64
-font_data = ExtResource( 18 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1000, 1000 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 274.189, 101.622 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.635294, 0.635294, 0.635294, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.635294, 0.635294, 0.635294, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.862745, 0.862745, 0.862745, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.862745, 0.862745, 0.862745, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="Root" type="Node2D"]
 
 [node name="ModuleProcessor" type="Node2D" parent="."]
 script = ExtResource( 2 )
-
-[node name="Node2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 139.26, -153.881 )
-
-[node name="PatchCable" parent="." instance=ExtResource( 4 )]
-
-[node name="PatchCable2" parent="." instance=ExtResource( 4 )]
-
-[node name="PatchCable3" parent="." instance=ExtResource( 4 )]
-
-[node name="PatchCable4" parent="." instance=ExtResource( 4 )]
-
-[node name="PatchCable5" parent="." instance=ExtResource( 4 )]
-
-[node name="PatchCable6" parent="." instance=ExtResource( 4 )]
-
-[node name="PatchCable7" parent="." instance=ExtResource( 4 )]
-
-[node name="Sequencer8" parent="." instance=ExtResource( 7 )]
-position = Vector2( 560, 140 )
-
-[node name="Sequencer9" parent="." instance=ExtResource( 7 )]
-position = Vector2( 560, 420 )
-
-[node name="Sequencer10" parent="." instance=ExtResource( 7 )]
-position = Vector2( 560, 700 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -61,7 +101,7 @@ script = ExtResource( 8 )
 [node name="grid" type="Sprite" parent="Camera2D"]
 scale = Vector2( 0.125, 0.125 )
 z_index = -1000
-texture = ExtResource( 6 )
+texture = ExtResource( 21 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 22400, 22400 )
@@ -70,12 +110,40 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="LEDS" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1470, 210 )
+[node name="ModuleDetector" type="Area2D" parent="Camera2D"]
+position = Vector2( -512, 0 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 6 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/ModuleDetector"]
+position = Vector2( -1000, 0 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="CableBox" type="Sprite" parent="Camera2D"]
+position = Vector2( 0.2724, -300.291 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 50
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -136.718, 0 )
+script = ExtResource( 4 )
+
+[node name="JackDetect" type="Area2D" parent="Camera2D/CableBox"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/CableBox/JackDetect"]
+position = Vector2( 135.822, 101.426 )
+shape = SubResource( 7 )
+
+[node name="RoverViewLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Control" type="Control" parent="RoverViewLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -84,7 +152,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control"]
+[node name="NinePatchRect" type="NinePatchRect" parent="RoverViewLayer/Control"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -98,7 +166,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="TextureRect" type="TextureRect" parent="RoverViewLayer/Control"]
 anchor_bottom = 1.0
 texture = ExtResource( 13 )
 stretch_mode = 2
@@ -107,31 +175,81 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="ColorRect" type="ColorRect" parent="RoverViewLayer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-color = Color( 0.662745, 0.52549, 0.866667, 1 )
+margin_right = 400.0
+color = Color( 0.898039, 0.898039, 0.898039, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer/Control/ColorRect"]
+[node name="ViewportContainer" type="ViewportContainer" parent="RoverViewLayer/Control/ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -160.0
+margin_top = 76.0
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="CanvasLayer/Control/ColorRect/ViewportContainer"]
+[node name="Viewport" type="Viewport" parent="RoverViewLayer/Control/ColorRect/ViewportContainer"]
 size = Vector2( 100, 100 )
 handle_input_locally = false
 render_target_update_mode = 3
+script = ExtResource( 18 )
 
-[node name="Moon" parent="CanvasLayer/Control/ColorRect/ViewportContainer/Viewport" instance=ExtResource( 12 )]
-position = Vector2( 1034, 35 )
+[node name="ColorRect" type="ColorRect" parent="RoverViewLayer/Control/ColorRect"]
+anchor_right = 1.0
+margin_bottom = 76.0
+color = Color( 0.898039, 0.898039, 0.898039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RoverViewLayer/Control/ColorRect/ColorRect"]
+anchor_right = 1.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Rover View"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="RoverViewLayer/Control/ColorRect"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -160.0
+color = Color( 0.898039, 0.898039, 0.898039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RunButton" type="Button" parent="RoverViewLayer/Control/ColorRect/ColorRect2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -83.0
+margin_top = -128.5
+margin_right = 83.0
+margin_bottom = -20.5
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "RUN"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PartsBinLayer" type="CanvasLayer" parent="."]
 
@@ -174,30 +292,183 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -400.0
 margin_right = -16.0
-color = Color( 0.662745, 0.52549, 0.866667, 1 )
+color = Color( 0.898039, 0.898039, 0.898039, 1 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="PartsBinLayer/Control/ColorRect"]
+[node name="PartsBinInner" parent="PartsBinLayer/Control/ColorRect" instance=ExtResource( 19 )]
+margin_top = 76.0
+
+[node name="Trash" type="ColorRect" parent="PartsBinLayer/Control/ColorRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 76.0
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trash" type="Label" parent="PartsBinLayer/Control/ColorRect/Trash"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = 72.3985
+margin_right = 208.0
+margin_bottom = 148.398
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Delete Part"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="PartsBinLayer/Control/ColorRect/Trash"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -129.604
+margin_top = -196.341
+margin_right = -129.604
+margin_bottom = -196.341
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="PartsBinLayer/Control/ColorRect"]
 anchor_right = 1.0
 margin_bottom = 76.0
-custom_fonts/font = SubResource( 1 )
+color = Color( 0.898039, 0.898039, 0.898039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PartsBinLayer/Control/ColorRect/ColorRect"]
+anchor_right = 1.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Parts Bin"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ORGate" parent="." instance=ExtResource( 11 )]
-position = Vector2( 105, 350 )
+[node name="MouseLayer" type="CanvasLayer" parent="."]
+layer = 10
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="Hand" parent="MouseLayer" instance=ExtResource( 5 )]
 
-[node name="Hand" parent="CanvasLayer2" instance=ExtResource( 5 )]
+[node name="PartMoveLayer" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource( 20 )
 
-[node name="MotorOut" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1680, 665 )
+[node name="WinLayer" type="CanvasLayer" parent="."]
+layer = 5
 
-[node name="SigGen" parent="." instance=ExtResource( 17 )]
-position = Vector2( 735, 945 )
+[node name="WinUI" type="ColorRect" parent="WinLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.443137 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[connection signal="gui_input" from="CanvasLayer/Control/TextureRect" to="CanvasLayer/Control/TextureRect" method="_gui_input"]
+[node name="TitleBG" type="ColorRect" parent="WinLayer/WinUI"]
+anchor_right = 1.0
+margin_bottom = 116.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WinLayer/WinUI/TitleBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 9 )
+text = "MISSION SUCCESSFUL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="WinLayer/WinUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 115.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextMission" type="Button" parent="WinLayer/WinUI/Control"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 376.0
+margin_bottom = 86.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "NEXT MISSION"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="WinLayer/WinUI/Control"]
+margin_left = 16.0
+margin_top = 102.0
+margin_right = 376.0
+margin_bottom = 172.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "CONTINUE WORKING"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMenu" type="Button" parent="WinLayer/WinUI/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -86.0
+margin_right = 376.0
+margin_bottom = -16.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "BACK TO MENU"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="RoverViewLayer/Control/TextureRect" to="RoverViewLayer/Control/TextureRect" method="_gui_input"]
+[connection signal="pressed" from="RoverViewLayer/Control/ColorRect/ColorRect2/RunButton" to="RoverViewLayer/Control/ColorRect/ColorRect2/RunButton" method="_on_RunButton_pressed"]
 [connection signal="gui_input" from="PartsBinLayer/Control/TextureRect" to="PartsBinLayer/Control/TextureRect" method="_gui_input"]
+[connection signal="mouse_entered" from="PartsBinLayer/Control/ColorRect" to="PartsBinLayer/Control/ColorRect" method="_on_ColorRect_mouse_entered"]
+[connection signal="mouse_exited" from="PartsBinLayer/Control/ColorRect" to="PartsBinLayer/Control/ColorRect" method="_on_ColorRect_mouse_exited"]
+[connection signal="pressed" from="WinLayer/WinUI/Control/NextMission" to="WinLayer/WinUI" method="_on_NextMission_pressed"]
+[connection signal="pressed" from="WinLayer/WinUI/Control/Continue" to="WinLayer/WinUI" method="_on_Continue_pressed"]
+[connection signal="pressed" from="WinLayer/WinUI/Control/BackToMenu" to="WinLayer/WinUI" method="_on_BackToMenu_pressed"]

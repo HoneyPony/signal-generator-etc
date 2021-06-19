@@ -10,16 +10,19 @@ func get_input_modules(module):
 	var result = []
 	
 	for jack in jack_ins:
+		if not is_instance_valid(jack):
+			continue
+		
 		var j = jack.jack_coupling
-		if j == null:
+		if not is_instance_valid(j) or j == null:
 			continue
 		
 		j = j.paired_jack
-		if j == null:
+		if not is_instance_valid(j) or j == null:
 			continue
 			
 		j = j.plug_coupling
-		if j == null:
+		if not is_instance_valid(j) or j == null:
 			continue
 			
 		# at this point we have gotten the plug

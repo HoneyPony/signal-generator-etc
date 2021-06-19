@@ -16,6 +16,8 @@ var plug_coupling = null
 
 var paired_jack = null
 
+onready var internal_col = get_node("Area2D/InternalCol")
+
 func _mouse_enter():
 	mouse = true
 
@@ -60,6 +62,11 @@ func connect_plug():
 		$PlugS.pitch_scale = rand_range(0.95, 1.05)
 		$PlugS.play()
 		
+		# mouse has to re-enter to connect again
+		#mouse = false
+		internal_col.disabled = true
+		
+		
 	plug_coupling = plug_target
 	plug_coupling.jack_coupling = self
 	
@@ -75,17 +82,46 @@ func deconnect_plug():
 	plug_coupling.jack_coupling = null
 	plug_coupling = null
 	
+func end_drag():
+	if GS.dragged_jack == self:
+		GS.dragged_jack = null
+		
+		if GS.mark_jack_for_trash:
+			if plug_coupling != null:
+				deconnect_plug()
+			
+			get_parent().queue_free()
+	
 func _physics_process(delta):
+	if plug_coupling == null and plug_target != null:
+		var dist = (plug_target.global_position.distance_to(global_position))
+		if dist > 170:
+			plug_target = null
+	
+	if plug_coupling == null:
+		internal_col.disabled = false
+	
+	if plug_coupling != null and not is_instance_valid(plug_coupling):
+		get_parent().queue_free()
+		plug_coupling = null
+		return
+		
+	if not is_instance_valid(plug_target):
+		plug_target = null
+	
 	if plug_target == null:
 		z_index = 100
 	else:
 		z_index = -10
+		
+	if get_parent().cur_mode == get_parent().Mode.Spawn:
+		z_index = 14
 	
 	dragging = dragging and Input.is_action_pressed("mouse_click")
 	
 	if not dragging:
-		if GS.dragged_jack == self:
-			GS.dragged_jack = null
+		end_drag()
+		
 	
 	if dragging:
 		
@@ -208,9 +244,16 @@ func _physics_process(delta):
 		$jack.modulate = Color.green
 		
 		if Input.is_action_just_pressed("mouse_click"):
-			if GS.dragged_jack == null and GS.dragged_module == null:
+			if GS.dragged_jack == null and GS.dragged_misc == null:
+				if GS.dragged_module != null:
+					GS.dragged_module.end_drag()
+				
+				
 				GS.dragged_jack = self
 				dragging = true
+				
+				get_parent().advance_spawn_state(self)
+				
 				#drag_center = get_global_mouse_position() - global_position
 				$Hotspot.global_position = get_global_mouse_position()
 	else:

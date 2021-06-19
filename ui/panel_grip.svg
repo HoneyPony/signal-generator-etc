@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="-25.695757"
-     inkscape:cy="-32.811889"
+     inkscape:zoom="7.919596"
+     inkscape:cx="-8.7040485"
+     inkscape:cy="41.157882"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -53,35 +53,35 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="opacity:0.999;fill:#aa87de;stroke-width:0.454625"
+       style="opacity:0.999;fill:#e6e6e6;stroke-width:0.454625;fill-opacity:1"
        id="rect3615"
        width="3.9702618"
        height="16.933334"
        x="-2.220446e-16"
        y="0" />
     <rect
-       style="opacity:0.999;fill:#c6afe9;stroke-width:0.165974"
+       style="opacity:0.999;fill:#3b3b3b;stroke-width:0.165974;fill-opacity:1"
        id="rect3611"
        width="0.5291667"
        height="16.933334"
        x="-2.7755576e-17"
        y="0" />
     <rect
-       style="opacity:0.999;fill:#c6afe9;stroke-width:0.165974"
+       style="opacity:0.999;fill:#3b3b3b;stroke-width:0.165974;fill-opacity:1"
        id="rect3613"
        width="0.5291667"
        height="16.933334"
        x="3.7041667"
        y="0" />
     <rect
-       style="opacity:0.999;fill:#9063d4;stroke-width:0.117361;fill-opacity:1"
+       style="opacity:0.999;fill:#ffffff;stroke-width:0.117361;fill-opacity:1"
        id="rect3619"
        width="0.26458335"
        height="16.933334"
        x="0.5291667"
        y="0" />
     <rect
-       style="opacity:0.999;fill:#9063d4;fill-opacity:1;stroke-width:0.117361"
+       style="opacity:0.999;fill:#ffffff;fill-opacity:1;stroke-width:0.117361"
        id="rect3621"
        width="0.26458335"
        height="16.933334"
