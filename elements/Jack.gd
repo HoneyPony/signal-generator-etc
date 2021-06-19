@@ -93,6 +93,11 @@ func end_drag():
 			get_parent().queue_free()
 	
 func _physics_process(delta):
+	if polar2cartesian(1, rotation).x >= 0:
+		$jack.flip_v = false
+	else:
+		$jack.flip_v = true
+	
 	if plug_coupling == null and plug_target != null:
 		var dist = (plug_target.global_position.distance_to(global_position))
 		if dist > 170:
@@ -218,10 +223,7 @@ func _physics_process(delta):
 		if target_x != null:
 			global_position.x = lerp(global_position.x, target_x, x_align_strength)
 		
-		if polar2cartesian(1, rotation).x >= 0:
-			$jack.flip_v = false
-		else:
-			$jack.flip_v = true
+		
 		#$jack_cover.flip_v = $jack.flip_v
 		
 		$jack.modulate = Color.white

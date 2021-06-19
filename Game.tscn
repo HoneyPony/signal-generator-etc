@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://ui/cable_box.svg" type="Texture" id=1]
 [ext_resource path="res://ModuleProcessor.gd" type="Script" id=2]
@@ -22,6 +22,10 @@
 [ext_resource path="res://LayerFollowCamera.gd" type="Script" id=20]
 [ext_resource path="res://grid2.svg" type="Texture" id=21]
 [ext_resource path="res://ui/ModuleTrash.gd" type="Script" id=22]
+[ext_resource path="res://font/BrassMono/regular.otf" type="DynamicFontData" id=23]
+[ext_resource path="res://ui/log_grip.svg" type="Texture" id=24]
+[ext_resource path="res://ui/LogGrip.gd" type="Script" id=25]
+[ext_resource path="res://ui/MissionReferenceManual.gd" type="Script" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1000, 1000 )
@@ -89,6 +93,11 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="DynamicFont" id=8]
+size = 20
+use_filter = true
+font_data = ExtResource( 23 )
+
 [node name="Root" type="Node2D"]
 
 [node name="ModuleProcessor" type="Node2D" parent="."]
@@ -148,6 +157,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -32.0
+margin_bottom = -32.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -256,6 +266,7 @@ __meta__ = {
 [node name="Control" type="Control" parent="PartsBinLayer"]
 anchor_bottom = 1.0
 margin_right = 32.0
+margin_bottom = -32.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -361,9 +372,10 @@ __meta__ = {
 }
 
 [node name="MouseLayer" type="CanvasLayer" parent="."]
-layer = 10
+layer = 20
 
 [node name="Hand" parent="MouseLayer" instance=ExtResource( 5 )]
+is_in_game = true
 
 [node name="PartMoveLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -373,7 +385,6 @@ script = ExtResource( 20 )
 layer = 5
 
 [node name="WinUI" type="ColorRect" parent="WinLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -449,9 +460,9 @@ __meta__ = {
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = -86.0
+margin_top = -118.0
 margin_right = 376.0
-margin_bottom = -16.0
+margin_bottom = -47.0
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/normal = SubResource( 5 )
@@ -464,6 +475,74 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TutLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Control" type="Control" parent="TutLayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="ColorRect" parent="TutLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 16.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MRMLabel" type="Label" parent="TutLayer/Control/Panel"]
+anchor_right = 1.0
+margin_top = 16.0459
+margin_bottom = 54.0459
+custom_fonts/font = ExtResource( 15 )
+text = "Mission Reference Manual: \"Straight to the Point\""
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionDesc0" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.5
+margin_top = 64.749
+margin_right = 475.5
+margin_bottom = 435.749
+custom_fonts/font = SubResource( 8 )
+text = "Hello Captain.
+
+This is a basic rover task intended to help you get on your feet. Your goal is to move the rover in a straight line to the goal destination.
+
+You will need to place a Motor Control module in order to move the rover. The left and right motors are controlled individually, so to move straight they must both be provided with an identical signal.
+
+A nice constant signal can be generated with a Signal Generator.
+
+Finally, you will want to adjust the knobs of your modules to proper values. The Motor Control has a built-in Speed Multiplier which you may find useful now or later.
+
+Note that the motors have a maximum speed. Past that point they will blow up, and become unusable until you push the Stop button in the Rover Control window (which will provide you with a fresh rover)."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TutLayer/Control"]
+anchor_right = 1.0
+margin_bottom = 16.0
+texture = ExtResource( 24 )
+stretch_mode = 2
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="gui_input" from="RoverViewLayer/Control/TextureRect" to="RoverViewLayer/Control/TextureRect" method="_gui_input"]
 [connection signal="pressed" from="RoverViewLayer/Control/ColorRect/ColorRect2/RunButton" to="RoverViewLayer/Control/ColorRect/ColorRect2/RunButton" method="_on_RunButton_pressed"]
 [connection signal="gui_input" from="PartsBinLayer/Control/TextureRect" to="PartsBinLayer/Control/TextureRect" method="_gui_input"]
@@ -472,3 +551,4 @@ __meta__ = {
 [connection signal="pressed" from="WinLayer/WinUI/Control/NextMission" to="WinLayer/WinUI" method="_on_NextMission_pressed"]
 [connection signal="pressed" from="WinLayer/WinUI/Control/Continue" to="WinLayer/WinUI" method="_on_Continue_pressed"]
 [connection signal="pressed" from="WinLayer/WinUI/Control/BackToMenu" to="WinLayer/WinUI" method="_on_BackToMenu_pressed"]
+[connection signal="gui_input" from="TutLayer/Control/TextureRect" to="TutLayer/Control/TextureRect" method="_gui_input"]

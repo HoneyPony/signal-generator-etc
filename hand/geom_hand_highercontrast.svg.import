@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hand_open_2.svg-fb1f15fe34354a97a5d8138eb4d49e4d.stex"
+path="res://.import/geom_hand_highercontrast.svg-2229c92b73cebdfc017fa070d9ea74c2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hand/hand_open_2.svg"
-dest_files=[ "res://.import/hand_open_2.svg-fb1f15fe34354a97a5d8138eb4d49e4d.stex" ]
+source_file="res://hand/geom_hand_highercontrast.svg"
+dest_files=[ "res://.import/geom_hand_highercontrast.svg-2229c92b73cebdfc017fa070d9ea74c2.stex" ]
 
 [params]
 

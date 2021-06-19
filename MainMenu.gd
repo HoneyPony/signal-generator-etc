@@ -1,8 +1,8 @@
 extends Control
 
-var Game = preload("res://Game.tscn")
+onready var MissionSelect = preload("res://ui/MissionSelect.tscn")
 
 func _on_PlayButton_pressed():
-	get_tree().change_scene_to(Game)
+	get_tree().change_scene_to(MissionSelect)
 	
 
