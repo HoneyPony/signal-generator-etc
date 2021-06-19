@@ -50,7 +50,7 @@ func process_module(module, delta):
 	# at this point, all inputs are up-to-date.
 	module.mod_process(delta)
 
-func _process(delta):
+func _physics_process(delta):
 	reset_visited()
 	
 	for module in get_tree().get_nodes_in_group("Modules"):

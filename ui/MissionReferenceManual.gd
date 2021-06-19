@@ -1,7 +1,11 @@
 extends ColorRect
 
 onready var descriptions = [
-	$MissionDesc0
+	null,
+	$MissionDesc1,
+	$MissionDesc2,
+	$MissionDesc3,
+	$MissionDesc4
 ]
 
 func _ready():

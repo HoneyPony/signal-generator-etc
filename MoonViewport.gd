@@ -3,6 +3,7 @@ extends Viewport
 var loaded_moon = null
 
 func _ready():
+	GS.moon_viewport = self
 	reload_moon()
 	
 func reload_moon():

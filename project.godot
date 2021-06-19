@@ -44,6 +44,7 @@ mouse_middle={
 2d_physics/layer_4="Module Area Detect"
 2d_physics/layer_5="Jacks For Deletion"
 2d_physics/layer_10="Rover"
+2d_physics/layer_11="RoverSensor"
 
 [physics]
 

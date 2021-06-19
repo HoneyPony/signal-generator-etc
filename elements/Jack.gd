@@ -19,9 +19,11 @@ var paired_jack = null
 onready var internal_col = get_node("Area2D/InternalCol")
 
 func _mouse_enter():
+	#GS.enable_hover_count += 1
 	mouse = true
 
 func _mouse_exit():
+	#GS.enable_hover_count -= 1
 	mouse = false
 	
 func x_gte(x1, x2):
@@ -243,7 +245,7 @@ func _physics_process(delta):
 		
 	
 	if mouse:
-		$jack.modulate = Color.green
+		$jack.modulate = Color(0.5, 1.0, 0.5, 1.0)
 		
 		if Input.is_action_just_pressed("mouse_click"):
 			if GS.dragged_jack == null and GS.dragged_misc == null:

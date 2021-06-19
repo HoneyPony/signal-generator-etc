@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://moon/rover_emit/rover_garage.svg" type="Texture" id=1]
+[ext_resource path="res://moon/rover_emit/Garage.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 190.012, 201.795 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 86.0118, 201.795 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 349.012, 49.7949 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 195.169, 27.4482 )
+
+[node name="Garage" type="Sprite"]
+position = Vector2( 245.436, 183.529 )
+scale = Vector2( 0.25, 0.25 )
+z_index = 30
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+emitting = true
+
+[node name="EmitPoint" type="Position2D" parent="."]
+position = Vector2( -101.763, -83.3729 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 291.988, -40.2051 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -391.012, -42.2051 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -85.0118, 110.795 )
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -103.45, 30.0338 )
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

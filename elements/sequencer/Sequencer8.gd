@@ -2,7 +2,7 @@ extends "res://ModuleBase.gd"
 
 var tick = 0
 
-var max_time_to_tick = 0.25
+var max_time_to_tick = 1.0
 
 var time_to_tick = max_time_to_tick
 
@@ -66,6 +66,12 @@ func render():
 			jack.output_state = 0.0
 
 func mod_process(delta):
+	if not GS.run_rover:
+		tick = 0
+		time_to_tick = max_time_to_tick
+		render()
+		return
+		
 	time_to_tick -= delta
 	
 	if time_to_tick <= 0:

@@ -1,29 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://moon/moon_tex_2.svg" type="Texture" id=1]
 [ext_resource path="res://moon/Rover.tscn" type="PackedScene" id=2]
 [ext_resource path="res://moon/MoonGrid.gd" type="Script" id=3]
 [ext_resource path="res://moon/MoonCamera.gd" type="Script" id=4]
-[ext_resource path="res://moon/goal_anim.png" type="Texture" id=5]
-[ext_resource path="res://moon/goal/get_rover_here.svg" type="Texture" id=6]
-[ext_resource path="res://moon/RoverGoalPosition.gd" type="Script" id=7]
-
-[sub_resource type="Animation" id=1]
-resource_name = "Anim"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 47 ]
-}
+[ext_resource path="res://moon/goal/RoverGoalPosition.tscn" type="PackedScene" id=5]
 
 [node name="Moon" type="Node2D"]
 
@@ -43,23 +24,7 @@ position = Vector2( 183.141, 0 )
 current = true
 script = ExtResource( 4 )
 
-[node name="RoverGoalPosition" type="Sprite" parent="."]
-position = Vector2( 344, 0 )
-scale = Vector2( 0.5, 0.5 )
-z_index = -10
-texture = ExtResource( 5 )
-hframes = 48
-frame = 25
-script = ExtResource( 7 )
-
-[node name="get_rover_here" type="Sprite" parent="RoverGoalPosition"]
-position = Vector2( -15.7642, -263.99 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 6 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RoverGoalPosition"]
-autoplay = "Anim"
-anims/Anim = SubResource( 1 )
+[node name="RoverGoalPosition" parent="." instance=ExtResource( 5 )]
 
 [node name="CameraMax" type="ReferenceRect" parent="."]
 margin_left = -3816.86

@@ -198,7 +198,10 @@ __meta__ = {
 [node name="ViewportContainer" type="ViewportContainer" parent="RoverViewLayer/Control/ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 76.0
+margin_left = 0.943848
+margin_top = 75.0562
+margin_right = 0.943848
+margin_bottom = -0.943848
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -245,18 +248,29 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -83.0
-margin_top = -128.5
+margin_top = -91.0
 margin_right = 83.0
-margin_bottom = -20.5
+margin_bottom = -20.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 text = "RUN"
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusLabel" type="Label" parent="RoverViewLayer/Control/ColorRect/ColorRect2"]
+margin_left = 14.0159
+margin_top = 9.67761
+margin_right = 54.0159
+margin_bottom = 23.6776
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -491,7 +505,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 16.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.0235294, 0.0235294, 0.0235294, 1 )
 script = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -508,7 +522,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MissionDesc0" type="Label" parent="TutLayer/Control/Panel"]
+[node name="MissionDesc1" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
@@ -517,9 +531,10 @@ margin_top = 64.749
 margin_right = 475.5
 margin_bottom = 435.749
 custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
 
-This is a basic rover task intended to help you get on your feet. Your goal is to move the rover in a straight line to the goal destination.
+The first thing we need to do is confirm the basic functionalities of the rover. Your goal is to move the rover in a straight line to the goal destination.
 
 You will need to place a Motor Control module in order to move the rover. The left and right motors are controlled individually, so to move straight they must both be provided with an identical signal.
 
@@ -528,6 +543,82 @@ A nice constant signal can be generated with a Signal Generator.
 Finally, you will want to adjust the knobs of your modules to proper values. The Motor Control has a built-in Speed Multiplier which you may find useful now or later.
 
 Note that the motors have a maximum speed. Past that point they will blow up, and become unusable until you push the Stop button in the Rover Control window (which will provide you with a fresh rover)."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionDesc2" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.5
+margin_top = 64.749
+margin_right = 475.5
+margin_bottom = 435.749
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Hello Captain.
+
+Now that we have confirmed the rover can move perfectly straight, we need to confirm that it can rotate in place.
+
+You will notice that the Motor Control module has two \"Reverse\" inputs, which specify that the motor will spin in reverse (when receiving a non-zero signal). 
+
+Spinning in place is accomplished by running one motor forwards and one motor in reverse, at the same speed.
+
+In total, your goal is to rotate the rover in place by at least 720 degrees in either direction."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionDesc3" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.5
+margin_top = 64.749
+margin_right = 475.5
+margin_bottom = 435.749
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Hello Captain.
+
+It is imperative that the rover is able to interact safely with other rovers on this moon. This mission involves crossing a busy intersection full of moving rovers.
+
+In particular, if your rover collides with another rover head-on, it will be destroyed. We would like to avoid that.
+
+Luckily, the rover can sense if something is in front of it. You can use the Front Sensor module to turn off the motor when something passes in front of the rover.
+
+Two things that might come in handy: the MUTIPLY input of the Signal Generator, and the NOT module."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionDesc4" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.5
+margin_top = 64.749
+margin_right = 475.5
+margin_bottom = 435.749
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Hello Captain.
+
+Given that the rover can both move straight and turn in place, it is possible to perform navigation involving both straight motion and turns.
+
+In order to program a single fixed movement path, it is possible to use a Sequencer, such as the 8-Step Sequencer.
+
+The Sequencer provides a series of outputs, 0.0 and 1.0, in sequential order. This information is indicated by the lights on the Sequencer.
+
+The Sequencer can enable or disable the Reverse signals at some given time, allowing the rover to move forward and then rotate.
+
+Do note that setting the sequencer time-step to 1 Second and the rover speed to 4 will allow the rover to be easily controlled in 90-degree rotation increments.
+
+This time and speed combination will also move the rover forward in convenient distance increments."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

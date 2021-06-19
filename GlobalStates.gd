@@ -21,7 +21,7 @@ func reset_state():
 
 	won_level = false
 
-	moon_index = 0
+	#moon_index = 0
 
 	# True if the camera should load with default properties,
 	# false if the camera should copy old properties
@@ -35,6 +35,14 @@ func reset_state():
 	next_patch_cable = null
 
 	mark_jack_for_trash = false
+	
+	mission_status_label = null
+	
+	rover_sensor_front = 0.0
+	
+	enable_hover_count = 0
+	
+	moon_viewport = null
 
 var dragged_jack = null
 var dragged_module = null
@@ -70,3 +78,11 @@ var may_spawn_patch_cable = true
 var next_patch_cable = null
 
 var mark_jack_for_trash = false
+
+var mission_status_label = null
+
+var rover_sensor_front = 0.0
+
+var enable_hover_count = 0
+
+var moon_viewport = null
