@@ -14,6 +14,8 @@ func handle_trash():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	visible = !GS.run_rover
+	
 	var s = 0.5 * GS.camera_scale_inv
 	scale = Vector2(s, s)
 	

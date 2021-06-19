@@ -39,11 +39,48 @@ onready var switches = [
 	$Switch8,
 ]
 
+onready var overrides = [
+	$Over1,
+	$Over2,
+	$Over3,
+	$Over4,
+	$Over5,
+	$Over6,
+	$Over7,
+	$Over8,
+]
+
+onready var inputs = [
+	$Over1,
+	$Over2,
+	$Over3,
+	$Over4,
+	$Over5,
+	$Over6,
+	$Over7,
+	$Over8,
+	$JackIn
+]
+
 onready var output_jacks = [
 	$OutJack,
 	$OutJack2,
 	$OutJack3,
+	$OutJack4,
 ]
+
+func get_time_setting():
+	var stage = $TimeDial.stage
+	
+	var arr = [0.0625, 0.125, 0.25, 0.5, 1, 2, 4]
+	if stage <= 0:
+		return 0.0625
+	if stage >= arr.size():
+		return 4
+	return arr[int(stage)]
+
+func get_inputs():
+	return inputs
 
 func _ready():
 	for led in sign_leds:
@@ -51,33 +88,56 @@ func _ready():
 		led.off_color = sign_leds[0].off_color
 	render()
 
+func get_state(index):
+	if index >= 8:
+		return false
+	
+	if overrides[index].jack_coupling != null:
+		return boolstate(overrides[index].get_state())
+	
+	return switches[index].state
+
 func render():
 	for i in range(0, 8):
 		tick_leds[i].set_led(i == tick)
 			
 	for i in range(0, 8):
-		sign_leds[i].set_led(i == tick and switches[i].state)
+		sign_leds[i].set_led(i == tick and get_state(i))
 			
 			
 	for jack in output_jacks:
-		if switches[tick].state:
+		if get_state(tick):
 			jack.output_state = 1.0
 		else:
 			jack.output_state = 0.0
 
 func mod_process(delta):
+	max_time_to_tick = get_time_setting()
+	
 	if not GS.run_rover:
-		tick = 0
-		time_to_tick = max_time_to_tick
+		tick = 8
+		time_to_tick = 0.0 #max_time_to_tick
 		render()
 		return
 		
 	time_to_tick -= delta
 	
 	if time_to_tick <= 0:
-		tick = (tick + 1) % 8
-		time_to_tick = max_time_to_tick
+		if tick < 8:
+			tick = tick + 1
 		
+		var enable_tick = true
+		
+		if tick >= 8:
+			if $JackIn.jack_coupling != null:
+				enable_tick = boolstate($JackIn.get_state())
+			
+			if enable_tick:
+				tick = 0
+			
+		if enable_tick:
+			time_to_tick = max_time_to_tick
+			
 		render()
 		
 	

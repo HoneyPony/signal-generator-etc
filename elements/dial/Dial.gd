@@ -32,6 +32,10 @@ func end_drag():
 		GS.dragged_misc = null
 		
 func update_dial(enable_sound = true):
+	var dial_offset_min = $dial.rotation_degrees - 360
+	if $dial.rotation_degrees > max_angle and dial_offset_min < max_angle and dial_offset_min >= min_angle:
+		$dial.rotation_degrees = dial_offset_min
+	
 	if $dial.rotation_degrees < min_angle or $dial.rotation_degrees > max_angle:
 		$dial.rotation_degrees = last_valid_rotation
 	#$dial.rotation_degrees = clamp($dial.rotation_degrees, min_angle, max_angle)
@@ -51,6 +55,10 @@ func _ready():
 	update_dial(false)
 	
 func _process(delta):
+	if GS.run_rover:
+		end_drag()
+		return
+	
 	if not Input.is_action_pressed("mouse_click"):
 		end_drag()
 		
@@ -61,6 +69,9 @@ func _process(delta):
 		update_dial()
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
+	if GS.run_rover:
+		return
+	
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if event.button_index == BUTTON_LEFT:

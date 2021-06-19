@@ -113,11 +113,12 @@ func advance_spawn_state(which):
 func _process(delta):
 	
 	if cur_mode == Mode.Spawn:
-		visible = true
+		visible = !GS.run_rover
 		z_index = 15
 		go_to_camera()
 		
 	if cur_mode == Mode.Spawning:
+		visible = true
 		if $Jack1.dragging:
 			z_index = 101
 			move_jack_two()

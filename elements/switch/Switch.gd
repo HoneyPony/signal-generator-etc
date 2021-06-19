@@ -24,6 +24,9 @@ func swap():
 	$SwitchS.play()
 		
 func _on_input_event(viewport, event, shape_idx):
+	if GS.run_rover:
+		return
+	
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if event.button_index == BUTTON_LEFT:

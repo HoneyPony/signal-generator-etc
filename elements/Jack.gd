@@ -95,6 +95,9 @@ func end_drag():
 			get_parent().queue_free()
 	
 func _physics_process(delta):
+	if GS.run_rover:
+		end_drag()
+	
 	if polar2cartesian(1, rotation).x >= 0:
 		$jack.flip_v = false
 	else:
@@ -248,17 +251,19 @@ func _physics_process(delta):
 		$jack.modulate = Color(0.5, 1.0, 0.5, 1.0)
 		
 		if Input.is_action_just_pressed("mouse_click"):
-			if GS.dragged_jack == null and GS.dragged_misc == null:
-				if GS.dragged_module != null:
-					GS.dragged_module.end_drag()
-				
-				
-				GS.dragged_jack = self
-				dragging = true
-				
-				get_parent().advance_spawn_state(self)
-				
-				#drag_center = get_global_mouse_position() - global_position
-				$Hotspot.global_position = get_global_mouse_position()
+			if not GS.run_rover:
+			
+				if GS.dragged_jack == null and GS.dragged_misc == null:
+					if GS.dragged_module != null:
+						GS.dragged_module.end_drag()
+					
+					
+					GS.dragged_jack = self
+					dragging = true
+					
+					get_parent().advance_spawn_state(self)
+					
+					#drag_center = get_global_mouse_position() - global_position
+					$Hotspot.global_position = get_global_mouse_position()
 	else:
 		$jack.modulate = Color.white
