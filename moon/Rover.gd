@@ -21,11 +21,26 @@ func collide_rover():
 	
 	GS.mission_status_label.text = "Mission failed! Rover has collided with another rover"
 
-func read_sensor(s: Area2D):
-	var b = s.get_overlapping_bodies()
+func is_in_front(bod: Node2D):
+	var dir_vector = polar2cartesian(1, rotation)
+	var dir_to_bod = bod.global_position - global_position
+	
+	var forward_comp = dir_to_bod.project(dir_vector).length()
+	
+	print(forward_comp)
+	
+	if forward_comp >= 64:
+		return true
+
+	return false
+
+func read_front_sensor():
+	var b = $FrontSensor.get_overlapping_bodies()
 	var state = 0.0
 	if not b.empty():
-		state = 1.0
+		for bod in b:
+			if is_in_front(bod):
+				state = 1.0
 	return state
 	
 var disable_90_rounding = false
@@ -99,7 +114,7 @@ func _physics_process(delta):
 	var needed_vel = (calc_global_position - global_position)
 	move_and_collide(needed_vel)
 	
-	GS.rover_sensor_front = read_sensor($FrontSensor)
+	GS.rover_sensor_front = read_front_sensor()
 
 
 func _on_CollisionWithRover_body_entered(body):

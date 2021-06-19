@@ -7,7 +7,7 @@
 extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 15, 31.2241 )
+extents = Vector2( 17, 8 )
 
 [node name="AutoRover" type="KinematicBody2D" groups=[
 "AMRover",
@@ -30,5 +30,5 @@ collision_layer = 1024
 collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontSensor"]
-position = Vector2( 31.9737, 0 )
+position = Vector2( 49, 0 )
 shape = SubResource( 2 )
