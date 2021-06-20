@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="19.1929"
-   height="56.067825"
-   viewBox="0 0 5.0781213 14.834613"
+   width="24"
+   height="60"
+   viewBox="0 0 6.3499999 15.875001"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="3.1861433"
-     inkscape:cy="100.58551"
+     inkscape:zoom="11.2"
+     inkscape:cx="11.356671"
+     inkscape:cy="31.746165"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -57,6 +57,19 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-7.1220121,-8.8926125)">
+    <rect
+       style="opacity:0.999;fill:#cccccc;stroke:none;stroke-width:0.440311"
+       id="rect4819"
+       width="6.3500004"
+       height="15.875"
+       x="7.1220121"
+       y="8.8926125"
+       ry="0.47247025" />
+    <path
+       id="rect4823"
+       style="opacity:0.999;fill:#ffffff;stroke:none;stroke-width:0.353783"
+       d="M 7.5073004,8.8926125 12.44664,8.8608335 c 0.04809,3.0238095 -0.297544,12.5921755 -0.297544,12.5921755 -0.005,0.213389 -0.171913,0.390883 -0.385288,0.385288 L 7.1197623,21.716524 c -0.2134498,0 0.00225,-12.4386233 0.00225,-12.4386233 0,-0.2134497 0.171843,-0.3839149 0.3852881,-0.3852882 z"
+       sodipodi:nodetypes="scsscss" />
     <text
        xml:space="preserve"
        style="font-size:10.5833px;line-height:1.25;font-family:Cutive;-inkscape-font-specification:Cutive;stroke-width:0.264583"
@@ -80,11 +93,11 @@
          y="10.757601"
          style="stroke-width:0.264583" /></text>
     <rect
-       style="opacity:0.999;fill:#000000;stroke-width:0.193899"
+       style="opacity:0.999;fill:#000000;stroke-width:0.197814"
        id="rect924"
-       width="5.0781212"
-       height="14.834612"
-       x="7.1220121"
-       y="8.8926125" />
+       width="5.2916665"
+       height="14.816667"
+       x="7.6511788"
+       y="9.4217796" />
   </g>
 </svg>

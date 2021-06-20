@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://font/PoiretOne.tres" type="DynamicFont" id=1]
 [ext_resource path="res://MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://NotifyGlobalState.gd" type="Script" id=3]
 [ext_resource path="res://ui/MouseLayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://moon/moon_tex_2.svg" type="Texture" id=5]
+[ext_resource path="res://font/PoiretOne32.tres" type="DynamicFont" id=6]
+[ext_resource path="res://ui/slider/grabber.svg" type="Texture" id=7]
+[ext_resource path="res://ui/slider/grabber_two.svg" type="Texture" id=8]
+[ext_resource path="res://ui/VolumeSlider.gd" type="Script" id=9]
+[ext_resource path="res://MusicPlayer.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -41,10 +47,47 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+void fragment() {
+	vec2 r = UV;
+	r.x -= 0.5;
+	r.y -= 0.5;
+	
+	if (length(r) > 0.5) {
+		discard;
+	}
+	
+	vec2 uv = UV;
+	uv *= vec2(0.5, 0.55);
+	
+	uv.x += TIME * 0.012;
+	uv.y += TIME * -0.008;
+	
+	COLOR = texture(TEXTURE, uv);
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_top = 5
+border_color = Color( 0, 0, 0, 1 )
+
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,10 +97,13 @@ anchor_right = 1.0
 margin_top = 40.0
 margin_bottom = 155.0
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "SIGNAL GENERATOR 
 ETC"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Control" type="VBoxContainer" parent="."]
 anchor_top = 1.0
@@ -104,4 +150,114 @@ script = ExtResource( 3 )
 
 [node name="MouseLayer" parent="." instance=ExtResource( 4 )]
 
+[node name="MoonThing" type="Control" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="MoonThing"]
+material = SubResource( 5 )
+position = Vector2( -175.912, 108.291 )
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 5 )
+
+[node name="OptMenu" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 417.0
+margin_top = -290.903
+margin_right = 1008.0
+margin_bottom = -44.9028
+color = Color( 0.635294, 0.635294, 0.635294, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OptMenu"]
+margin_left = 35.0458
+margin_top = 29.3265
+margin_right = 252.046
+margin_bottom = 68.3265
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="OptMenu"]
+margin_left = 289.046
+margin_top = 34.3265
+margin_right = 552.046
+margin_bottom = 66.3265
+custom_icons/grabber_highlight = ExtResource( 8 )
+custom_icons/grabber = ExtResource( 7 )
+custom_styles/slider = SubResource( 6 )
+max_value = 1.0
+step = 0.01
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFX Volume" type="Label" parent="OptMenu"]
+margin_left = 86.9589
+margin_top = 174.087
+margin_right = 303.959
+margin_bottom = 213.087
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "SFX Volume"
+
+[node name="HSlider2" type="HSlider" parent="OptMenu"]
+margin_left = 289.046
+margin_top = 179.087
+margin_right = 552.046
+margin_bottom = 211.087
+custom_icons/grabber_highlight = ExtResource( 8 )
+custom_icons/grabber = ExtResource( 7 )
+custom_styles/slider = SubResource( 6 )
+max_value = 1.0
+step = 0.01
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+bus_name = "SFX"
+
+[node name="SFX Volume2" type="Label" parent="OptMenu"]
+margin_left = 51.4669
+margin_top = 103.103
+margin_right = 268.467
+margin_bottom = 142.103
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Music Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider3" type="HSlider" parent="OptMenu"]
+margin_left = 289.046
+margin_top = 108.103
+margin_right = 552.046
+margin_bottom = 140.103
+custom_icons/grabber_highlight = ExtResource( 8 )
+custom_icons/grabber = ExtResource( 7 )
+custom_styles/slider = SubResource( 6 )
+max_value = 1.0
+step = 0.01
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+bus_name = "Music"
+
+[node name="MusicPlayer" parent="." instance=ExtResource( 10 )]
+
 [connection signal="pressed" from="Control/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Control/OptButton" to="." method="_on_OptButton_pressed"]

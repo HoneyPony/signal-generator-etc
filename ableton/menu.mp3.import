@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/menu.mp3-918babb5830c0b6f8269104f1f64563a.mp3str"
+
+[deps]
+
+source_file="res://ableton/menu.mp3"
+dest_files=[ "res://.import/menu.mp3-918babb5830c0b6f8269104f1f64563a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

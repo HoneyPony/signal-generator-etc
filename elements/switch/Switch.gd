@@ -4,6 +4,13 @@ var state = false
 
 export var can_swap = true
 
+export var default_state = false
+
+func _ready():
+	if default_state:
+		state = true
+		$AnimationPlayer.play("InitT")
+
 func swap():
 	if GS.dragged_module != null:
 		GS.dragged_module.end_drag()
@@ -24,6 +31,7 @@ func swap():
 	$SwitchS.play()
 		
 func _on_input_event(viewport, event, shape_idx):
+	
 	if GS.run_rover:
 		return
 	

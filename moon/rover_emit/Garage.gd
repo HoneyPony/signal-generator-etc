@@ -25,11 +25,14 @@ func emit_rover():
 			return
 	
 	var r = ARover.instance()
-	r.global_position = $EmitPoint.global_position
+	r.global_position = ($EmitPoint.global_position / 32.0).round() * 32.0
 	r.rotation = emit_angle
 	emit_parent.add_child(r)
 
-func _process(delta):
+func _physics_process(delta):
+	if not GS.run_rover:
+		emit_timer = delta + 0.02
+	
 	if emitting:
 		emit_timer -= delta
 		

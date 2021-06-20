@@ -65,6 +65,12 @@ func start_drag():
 	set_collision_layer_bit(3, true)
 	set_collision_mask_bit(3, true)
 	
+	# Disable throwing away for short period of time
+	if has_valid_position:
+		ui_timer = 0.3
+	
+var ui_timer = -1
+	
 func end_drag():
 	dragging = false
 	
@@ -115,10 +121,23 @@ func can_use_cur_position_as_valid():
 	return (position_rounded - global_position).length_squared() < 0.000001
 				
 func _physics_process(delta):
+	ui_timer = max(ui_timer - delta, -1)
+	
 	var on_ui = is_intersecting_left_ui()
 	
 	if on_ui:
-		is_in_place = false
+		var can_set_not_in_place = true
+		if ui_timer >= 0:
+			can_set_not_in_place = false
+		if GS.run_rover:
+			can_set_not_in_place = false
+		
+		# can always get rid of new parts
+		if not has_been_placed:
+			can_set_not_in_place = true
+		
+		if can_set_not_in_place:
+			is_in_place = false
 		
 	
 	
@@ -161,4 +180,6 @@ func _physics_process(delta):
 		module.global_position = global_position
 		#get_parent().position = drag_target
 		#module.scale = Vector2(GS.camera_scale_fac, GS.camera_scale_fac)
-		
+	else:
+		global_position = valid_position
+		module.global_position = valid_position

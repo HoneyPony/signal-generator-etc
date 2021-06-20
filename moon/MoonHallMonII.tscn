@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://moon/Rover.tscn" type="PackedScene" id=1]
+[ext_resource path="res://moon/MoonGrid.gd" type="Script" id=2]
+[ext_resource path="res://moon/MoonCamera.gd" type="Script" id=3]
+[ext_resource path="res://moon/moon_tex_2.svg" type="Texture" id=4]
+[ext_resource path="res://moon/goal/Garage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://moon/WinMonitorSignal.gd" type="Script" id=6]
+
+[node name="Moon" type="Node2D"]
+
+[node name="Rover" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 32 )
+rotation = -1.5708
+
+[node name="MoonTex" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+z_index = -100
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2048, 2048 )
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 3 )
+
+[node name="CameraMax" type="ReferenceRect" parent="."]
+margin_left = -3998.11
+margin_top = -3000.0
+margin_right = 4001.89
+margin_bottom = 3000.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="GaragePair" type="Node2D" parent="."]
+position = Vector2( -32, 0 )
+
+[node name="Garage" parent="GaragePair" instance=ExtResource( 5 )]
+position = Vector2( 22.7526, 706.3 )
+emitting = false
+emit_time = 1.8
+
+[node name="Garage2" parent="GaragePair" instance=ExtResource( 5 )]
+position = Vector2( -27.2474, -492.44 )
+rotation = -3.14159
+emit_time = 2.3
+
+[node name="GaragePair2" type="Node2D" parent="."]
+position = Vector2( 96, 0 )
+
+[node name="Garage" parent="GaragePair2" instance=ExtResource( 5 )]
+position = Vector2( 22.7526, 446.756 )
+emit_time = 3.6
+
+[node name="Garage2" parent="GaragePair2" instance=ExtResource( 5 )]
+position = Vector2( -27.2474, -782.502 )
+rotation = -3.14159
+emitting = false
+
+[node name="WinMonitorSignal" type="Node" parent="."]
+script = ExtResource( 6 )
+expecting_pulse = true

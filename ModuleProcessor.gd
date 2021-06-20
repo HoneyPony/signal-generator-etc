@@ -35,6 +35,9 @@ func get_input_modules(module):
 	return result
 		
 func process_module(module, delta):
+	if module.visited_this_frame:
+		return
+	
 	# no matter what, this module is now visited. as such, if there is a
 	# loop, it will terminate at some point.
 	# if there is no loop, the evaluation logic will eventually work out to the
@@ -51,6 +54,7 @@ func process_module(module, delta):
 	module.mod_process(delta)
 
 func _physics_process(delta):
+	#print("START PROCESS")
 	reset_visited()
 	
 	for module in get_tree().get_nodes_in_group("Modules"):

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://elements/inputs/front_sensor.svg" type="Texture" id=1]
 [ext_resource path="res://elements/ModuleDragger.tscn" type="PackedScene" id=2]
 [ext_resource path="res://elements/JackIn.tscn" type="PackedScene" id=3]
 [ext_resource path="res://elements/inputs/FrontSensorIn.gd" type="Script" id=4]
+[ext_resource path="res://elements/switch/Switch.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 213, 138 )
@@ -40,3 +41,11 @@ rotation = -3.14159
 [node name="JackOut4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 418, 245 )
 rotation = -3.14159
+
+[node name="Switch" parent="." instance=ExtResource( 5 )]
+position = Vector2( 243, 105 )
+rotation = 1.57079
+
+[node name="Switch2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 243, 175 )
+rotation = 1.57079

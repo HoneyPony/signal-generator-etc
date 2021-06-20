@@ -10,12 +10,30 @@ var colorrect
 var target_y = 32
 
 func _ready():
+	GS.window_with_handle_bottom = self
 	pass
 	#if not on_right:
 	#colorrect = get_node("../ColorRect")
 	
+var target_override = -1
 
+func calc_target():
+	var size = get_viewport().size
+	var max_y = size.y - 32
+	
+	target_y = clamp(target_y, 0, max_y)
+	
+	var needed_margin = size.y - target_y
+	
+	needed_margin = -needed_margin
+	
+	#actual_margin += (needed_margin - actual_margin) * 0.2
+			
+	get_parent().margin_top = needed_margin
+	
 func _process(delta):
+	
+	
 	if not Input.is_action_pressed("mouse_click"):
 		dragging = false
 	
@@ -28,18 +46,14 @@ func _process(delta):
 	if dragging:
 		target_y = get_viewport().get_mouse_position().y
 		
-		var size = get_viewport().size
-		var max_y = size.y - 32
+		calc_target()
 		
-		target_y = clamp(target_y, 0, max_y)
-		
-		var needed_margin = size.y - target_y
-		
-		needed_margin = -needed_margin
-		
-		#actual_margin += (needed_margin - actual_margin) * 0.2
-				
-		get_parent().margin_top = needed_margin
+	if target_override != -1:
+		target_y = target_override
+		calc_target()
+		target_override = -1
+		dragging = false
+		return
 			
 			# needed margin here is negative..
 			#colorrect.margin_right = max(400 + needed_margin, 0)

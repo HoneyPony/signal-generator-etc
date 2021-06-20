@@ -80,6 +80,9 @@ is_input = false
 [node name="Switch" parent="." instance=ExtResource( 4 )]
 position = Vector2( 245, 140 )
 
+[node name="SwitchT" parent="." instance=ExtResource( 4 )]
+position = Vector2( 101.046, 221.76 )
+
 [node name="Switch2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 315, 140 )
 
@@ -184,8 +187,11 @@ on_color = Color( 1, 0, 0, 1 )
 [node name="ModuleDragger" parent="." instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ModuleDragger"]
-position = Vector2( 560, 169.857 )
+position = Vector2( 560, 169.327 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TimeDial" parent="." instance=ExtResource( 7 )]
 position = Vector2( 910, 210 )

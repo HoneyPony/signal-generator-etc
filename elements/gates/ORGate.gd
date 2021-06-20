@@ -37,6 +37,14 @@ func get_input_index(index):
 		is_true = !is_true
 	
 	return is_true
+	
+func _ready():
+	if type == 0:
+		for i in inputs:
+			i.default_state = 0.0
+	else:
+		for i in inputs:
+			i.default_state = 1.0
 
 func mod_process(delta):
 	var result = 0.0

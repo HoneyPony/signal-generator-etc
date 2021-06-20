@@ -111,7 +111,16 @@ func render():
 		else:
 			jack.output_state = 0.0
 
+var has_seen_false = true
+
 func mod_process(delta):
+	
+	var jack_in_state = $JackIn.get_state()
+	
+	if not boolstate(jack_in_state):
+		has_seen_false = true
+	#print("mod process -> ", self)
+	
 	max_time_to_tick = get_time_setting()
 	
 	if not GS.run_rover:
@@ -129,11 +138,17 @@ func mod_process(delta):
 		var enable_tick = true
 		
 		if tick >= 8:
+			
 			if $JackIn.jack_coupling != null:
-				enable_tick = boolstate($JackIn.get_state())
+				enable_tick = boolstate(jack_in_state)
+			
+			if $SwitchT.state == true:
+				if not has_seen_false:
+					enable_tick = false
 			
 			if enable_tick:
 				tick = 0
+				has_seen_false = false
 			
 		if enable_tick:
 			time_to_tick = max_time_to_tick

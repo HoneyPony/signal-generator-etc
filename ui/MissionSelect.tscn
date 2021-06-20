@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://font/PoiretOne.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/MissionButton.gd" type="Script" id=2]
 [ext_resource path="res://font/PoiretOne32.tres" type="DynamicFont" id=3]
 [ext_resource path="res://ui/MouseLayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://MusicPlayer.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
@@ -79,7 +80,7 @@ __meta__ = {
 }
 
 [node name="MissionButton0" type="Button" parent="VBoxContainer"]
-margin_right = 473.0
+margin_right = 471.0
 margin_bottom = 71.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -97,7 +98,7 @@ __meta__ = {
 
 [node name="MissionButton1" type="Button" parent="VBoxContainer"]
 margin_top = 75.0
-margin_right = 473.0
+margin_right = 471.0
 margin_bottom = 146.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -116,7 +117,7 @@ index = 1
 
 [node name="MissionButton2" type="Button" parent="VBoxContainer"]
 margin_top = 150.0
-margin_right = 473.0
+margin_right = 471.0
 margin_bottom = 221.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -135,7 +136,7 @@ index = 2
 
 [node name="MissionButton3" type="Button" parent="VBoxContainer"]
 margin_top = 225.0
-margin_right = 473.0
+margin_right = 471.0
 margin_bottom = 296.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -154,7 +155,7 @@ index = 3
 
 [node name="MissionButton4" type="Button" parent="VBoxContainer"]
 margin_top = 300.0
-margin_right = 473.0
+margin_right = 471.0
 margin_bottom = 371.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -171,10 +172,72 @@ __meta__ = {
 }
 index = 4
 
+[node name="MissionButton6" type="Button" parent="VBoxContainer"]
+margin_top = 375.0
+margin_right = 471.0
+margin_bottom = 446.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Mission 5: Hall Monitor"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+index = 5
+
+[node name="MissionButton7" type="Button" parent="VBoxContainer"]
+margin_top = 450.0
+margin_right = 471.0
+margin_bottom = 521.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Mission 6: Hall Monitor II"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+index = 6
+
+[node name="MissionButton5" type="Button" parent="VBoxContainer"]
+margin_top = 525.0
+margin_right = 471.0
+margin_bottom = 596.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Mission 7: Navigating by Sight"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+index = 7
+
 [node name="MouseLayer" parent="." instance=ExtResource( 4 )]
+
+[node name="MusicPlayer" parent="." instance=ExtResource( 5 )]
 
 [connection signal="pressed" from="VBoxContainer/MissionButton0" to="VBoxContainer/MissionButton0" method="_on_MissionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/MissionButton1" to="VBoxContainer/MissionButton1" method="_on_MissionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/MissionButton2" to="VBoxContainer/MissionButton2" method="_on_MissionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/MissionButton3" to="VBoxContainer/MissionButton3" method="_on_MissionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/MissionButton4" to="VBoxContainer/MissionButton4" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/MissionButton6" to="VBoxContainer/MissionButton6" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/MissionButton7" to="VBoxContainer/MissionButton7" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/MissionButton5" to="VBoxContainer/MissionButton5" method="_on_MissionButton_pressed"]

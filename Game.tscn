@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://ui/cable_box.svg" type="Texture" id=1]
 [ext_resource path="res://ModuleProcessor.gd" type="Script" id=2]
@@ -26,14 +26,19 @@
 [ext_resource path="res://ui/log_grip.svg" type="Texture" id=24]
 [ext_resource path="res://ui/LogGrip.gd" type="Script" id=25]
 [ext_resource path="res://ui/MissionReferenceManual.gd" type="Script" id=26]
+[ext_resource path="res://ui/TutButton.gd" type="Script" id=27]
+[ext_resource path="res://ui/TutInfoPanel.gd" type="Script" id=28]
+[ext_resource path="res://ui/WinButton.gd" type="Script" id=29]
+[ext_resource path="res://ui/MissionDesc0.gd" type="Script" id=30]
+[ext_resource path="res://MusicPlayer.tscn" type="PackedScene" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1000, 1000 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 274.189, 101.622 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -45,7 +50,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -57,7 +62,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.635294, 0.635294, 0.635294, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -70,6 +75,42 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -81,7 +122,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0, 0, 0, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -93,7 +134,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=11]
 size = 20
 use_filter = true
 font_data = ExtResource( 23 )
@@ -147,7 +188,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/CableBox/JackDetect"]
 position = Vector2( 135.822, 101.426 )
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [node name="RoverViewLayer" type="CanvasLayer" parent="."]
 layer = 3
@@ -251,9 +292,9 @@ margin_left = -83.0
 margin_top = -91.0
 margin_right = 83.0
 margin_bottom = -20.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
@@ -274,6 +315,171 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tut" type="ColorRect" parent="RoverViewLayer/Control"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -752.809
+margin_top = -215.5
+margin_right = -11.8094
+margin_bottom = 215.5
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 4
+needed_right = 500
+needed_bottom = 32
+
+[node name="Label" type="Label" parent="RoverViewLayer/Control/Tut"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -329.5
+margin_top = 46.0
+margin_right = 321.5
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 15 )
+text = "This, on the right, is the Rover View. You can use it to run your circuit and watch to see if it works.
+
+Like the Parts Bin, use the handle to open and close it."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutButton" type="Button" parent="RoverViewLayer/Control/Tut"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -94.3867
+margin_right = 70.0
+margin_bottom = -27.3867
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "NEXT"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 1
+
+[node name="Tut4" type="ColorRect" parent="RoverViewLayer/Control"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -752.809
+margin_top = -215.5
+margin_right = -11.8094
+margin_bottom = 215.5
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 5
+needed_right = 500
+
+[node name="Label" type="Label" parent="RoverViewLayer/Control/Tut4"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -329.5
+margin_top = 46.0
+margin_right = 321.5
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 15 )
+text = "Use the Run button to test the circuit. Once running, you can stop the circuit with the Stop button.
+
+The circuit cannot be modified while it is running."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutButton" type="Button" parent="RoverViewLayer/Control/Tut4"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -94.3867
+margin_right = 70.0
+margin_bottom = -27.3867
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "NEXT"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 1
+
+[node name="Tut5" type="ColorRect" parent="RoverViewLayer/Control"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -752.809
+margin_top = -215.5
+margin_right = -11.8094
+margin_bottom = 215.5
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 6
+needed_right = 500
+
+[node name="Label" type="Label" parent="RoverViewLayer/Control/Tut5"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -329.5
+margin_top = 46.0
+margin_right = 321.5
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 15 )
+text = "Inside the Rover View, you can move the camera around by holding the middle mouse button, and scroll to zoom (same as in the middle portion).
+"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutButton" type="Button" parent="RoverViewLayer/Control/Tut5"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -94.3867
+margin_right = 70.0
+margin_bottom = -27.3867
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "NEXT"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 1
 
 [node name="PartsBinLayer" type="CanvasLayer" parent="."]
 
@@ -366,6 +572,35 @@ texture = ExtResource( 12 )
 expand = true
 stretch_mode = 3
 
+[node name="Can\'tTrash" type="ColorRect" parent="PartsBinLayer/Control/ColorRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 76.0
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+is_del = true
+
+[node name="Trash" type="Label" parent="PartsBinLayer/Control/ColorRect/Can\'tTrash"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = -96.9102
+margin_right = 208.0
+margin_bottom = 58.0898
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Can't delete
+while running"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ColorRect" type="ColorRect" parent="PartsBinLayer/Control/ColorRect"]
 anchor_right = 1.0
 margin_bottom = 76.0
@@ -385,6 +620,61 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Tut" type="ColorRect" parent="PartsBinLayer/Control"]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -153.0
+margin_right = 749.0
+margin_bottom = 227.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 28 )
+index = 1
+needed_left = 300
+needed_right = 32
+needed_bottom = 32
+
+[node name="Label" type="Label" parent="PartsBinLayer/Control/Tut"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -329.5
+margin_top = 46.0
+margin_right = 321.5
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 15 )
+text = "This, on the left, is the parts bin. You can drag the handle to open and close it.
+
+It contains all the modules you need (e.g. Signal Generator) to control the rover."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutButton" type="Button" parent="PartsBinLayer/Control/Tut"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -94.3867
+margin_right = 70.0
+margin_bottom = -27.3867
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "NEXT"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MouseLayer" type="CanvasLayer" parent="."]
 layer = 20
 
@@ -399,6 +689,7 @@ script = ExtResource( 20 )
 layer = 5
 
 [node name="WinUI" type="ColorRect" parent="WinLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -441,9 +732,9 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 376.0
 margin_bottom = 86.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -458,9 +749,9 @@ margin_left = 16.0
 margin_top = 102.0
 margin_right = 376.0
 margin_bottom = 172.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -477,9 +768,9 @@ margin_left = 16.0
 margin_top = -118.0
 margin_right = 376.0
 margin_bottom = -47.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -522,6 +813,114 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MissionDesc0_0" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 322.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Welcome!
+
+As the new Captain of our Modular Autonomous Rover System (MARS), your job is to program our rovers to perform various different tasks. The rovers are controlled through a network of modules, which this interface is used to create.
+
+This guide is meant to quickly walk you through the interface so you can begin working on the rovers.
+
+Press the button to start:"
+autowrap = true
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutButton" type="Button" parent="TutLayer/Control/Panel/MissionDesc0_0"]
+margin_left = 270.0
+margin_top = 173.0
+margin_right = 410.0
+margin_bottom = 240.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "START"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = -1
+
+[node name="MissionDesc0_1" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.5
+margin_top = 65.379
+margin_right = 475.5
+margin_bottom = 436.379
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Welcome!
+
+As the new Captain of our Modular Autonomous Rover System (MARS), your job is to program our rovers to perform various different tasks. The rovers are controlled through a network of modules, which this interface is used to create.
+
+This guide is meant to quickly walk you through the interface so you can begin working on the rovers."
+autowrap = true
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 0
+
+[node name="MissionDesc0_2" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.5
+margin_top = 65.379
+margin_right = 475.5
+margin_bottom = 436.379
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Welcome!
+
+As the new Captain of our Modular Autonomous Rover System (MARS), your job is to program our rovers to perform various different tasks. The rovers are controlled through a network of modules, which this interface is used to create.
+
+This guide is meant to quickly walk you through the interface so you can begin working on the rovers.
+
+Press the button to conclude the mission:"
+autowrap = true
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 7
+
+[node name="WinButton2" type="Button" parent="TutLayer/Control/Panel/MissionDesc0_2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -58.3716
+margin_top = 172.619
+margin_right = 285.628
+margin_bottom = 239.619
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "CONCLUDE MISSION"
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MissionDesc1" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
@@ -530,17 +929,17 @@ margin_left = -475.5
 margin_top = 64.749
 margin_right = 475.5
 margin_bottom = 435.749
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
-text = "Hello Captain.
+text = "Hello Captain, and welcome to your first mission!
 
-The first thing we need to do is confirm the basic functionalities of the rover. Your goal is to move the rover in a straight line to the goal destination.
+The first thing we need to do is confirm the basic functionalities of the rover. Your goal is to move the rover in a straight line to the goal destination. You may want to open the Rover View to see where that is.
 
-You will need to place a Motor Control module in order to move the rover. The left and right motors are controlled individually, so to move straight they must both be provided with an identical signal.
+You will need to place a Motor Control module in order to move the rover. The left and right motors are controlled individually, so to move straight they must both be provided with an identical number in the \"Speed\" input.
 
-A nice constant signal can be generated with a Signal Generator.
+A nice constant number can be generated with a Signal Generator.
 
-Finally, you will want to adjust the knobs of your modules to proper values. The Motor Control has a built-in Speed Multiplier which you may find useful now or later.
+Finally, you will want to adjust the knobs of your modules to proper values. The Motor Control has a built-in Speed Multiplier which you may find useful now or later. In any case it should be larger than 0.
 
 Note that the motors have a maximum speed. Past that point they will blow up, and become unusable until you push the Stop button in the Rover Control window (which will provide you with a fresh rover)."
 autowrap = true
@@ -552,11 +951,11 @@ __meta__ = {
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -475.5
-margin_top = 64.749
-margin_right = 475.5
-margin_bottom = 435.749
-custom_fonts/font = SubResource( 8 )
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 354.0
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
 
@@ -576,11 +975,11 @@ __meta__ = {
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -475.5
-margin_top = 64.749
-margin_right = 475.5
-margin_bottom = 435.749
-custom_fonts/font = SubResource( 8 )
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 356.0
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
 
@@ -588,9 +987,9 @@ It is imperative that the rover is able to interact safely with other rovers on 
 
 In particular, if your rover collides with another rover head-on, it will be destroyed. We would like to avoid that.
 
-Luckily, the rover can sense if something is in front of it. You can use the Front Sensor module to turn off the motor when something passes in front of the rover.
+Luckily, the rover can sense if something is in front of it. You can use the Direction Sensor Input module to turn off the motor when something passes in front of the rover. The module provides sensors for the front, left, and right of the rover, and by default will sense both rocks and rovers (but can selectively sense either).
 
-Two things that might come in handy: the MUTIPLY input of the Signal Generator, and the NOT module."
+The NOT module will also likely be useful here. The various MULTIPLY inputs that exist on some modules may also be useful."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -604,7 +1003,7 @@ margin_left = -475.5
 margin_top = 64.749
 margin_right = 475.5
 margin_bottom = 435.749
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
 
@@ -616,7 +1015,7 @@ The Sequencer provides a series of outputs, 0.0 and 1.0, in sequential order. Th
 
 The Sequencer can enable or disable the Reverse signals at some given time, allowing the rover to move forward and then rotate.
 
-Do note that setting the sequencer time-step to 1 Second and the rover speed to 4 will allow the rover to be easily controlled in 90-degree rotation increments.
+Do note that setting the sequencer time-step to 1/2 Second and the rover speed to 4 will allow the rover to be easily controlled in 90-degree rotation increments.
 
 This time and speed combination will also move the rover forward in convenient distance increments."
 autowrap = true
@@ -624,9 +1023,86 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MissionDescHMI" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 351.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Hello Captain.
+
+One important task the rover can perform is collecting information.
+
+The Antenna Output module allows the rover to output four separate pieces of data for collection by an external station.
+
+Here our task is to monitor other rovers that are passing by. In particular, the Left sensor should be attached to the antenna Data Channel 1, and the Right sensor should be attached to the antenna Data Channel 2.
+
+Pay attention to the Expected light on the Antenna Output module versus the Actual light. The Expected signal shows what value your circuit is being tested against to verify that it works."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionDescHMII" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.5
+margin_top = 64.749
+margin_right = 475.5
+margin_bottom = 435.749
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Hello Captain.
+
+The system for monitoring rovers worked great. However, it needs to be updated to give the antenna a different, more specific, signal.
+
+In particular: when the left sensor sees a rover, data channel 1 should be non-zero for exactly half a second. And, data channel 2 should be non-zero for exactly half a second when the right sensor sees a rover.
+
+This seems like a complicated problem but it is actually quite straightforward using a Sequencer.
+
+The Sequencer, after all, can generate a signal lasting exactly half a second quite easily. All that is needed then is to wait to generate the signal until the sensor sees a rover.
+
+This can be done by using the Trigger input on the Sequencer.
+
+So, you will want to program two Sequencers that can generate half a second of a signal, and wire them to two separate Sensor Inputs. And then of course wire the Sequencers to the antenna.
+
+One final note: Pay attention to the Antenna Output module's Expected signal to see if anything is going wrong. The Trigger Once / Trigger Always switch on the Sequencers is important."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionDescSensN" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 282.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Hello Captain.
+
+Here the rover needs to navigate out of a complicated cave system. However, we are in luck.
+
+If you look at the green corner markings on the Rover View, you may notice that they mark out a path to the goal destination, as a series of straight movements and turns.
+
+It is possible to use the front, left, and right rover sensors to detect these corners. As such, the rover can move forward and, once a corner is detected, rotate to match the correct forward direction."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect" type="TextureRect" parent="TutLayer/Control"]
 anchor_right = 1.0
-margin_bottom = 16.0
+margin_top = 0.629944
+margin_bottom = 16.6299
 texture = ExtResource( 24 )
 stretch_mode = 2
 script = ExtResource( 25 )
@@ -634,12 +1110,279 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Tut" type="ColorRect" parent="TutLayer/Control"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -370.5
+margin_top = -315.893
+margin_right = 370.5
+margin_bottom = -2.89276
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 28 )
+needed_left = 32
+needed_right = 32
+needed_bottom = 128
+
+[node name="Label" type="Label" parent="TutLayer/Control/Tut"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -329.5
+margin_top = 46.0346
+margin_right = 329.5
+margin_bottom = 169.035
+custom_fonts/font = ExtResource( 15 )
+text = "This is the Mission Reference Manual. It contains
+information about each Mission you work on.
+You can drag the top bar to open or close it."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutButton" type="Button" parent="TutLayer/Control/Tut"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -101.129
+margin_right = 70.0
+margin_bottom = -34.1291
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "NEXT"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Tut" type="ColorRect" parent="BackLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -370.5
+margin_top = -228.5
+margin_right = 370.5
+margin_bottom = 228.5
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 2
+needed_left = 32
+needed_right = 32
+needed_bottom = 32
+
+[node name="Label" type="Label" parent="BackLayer/Tut"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -329.5
+margin_top = 46.0
+margin_right = 321.5
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 15 )
+text = "This center portion is the primary area for building the control circuit for the rover.
+
+You can drag new modules here from the Parts Bin and connect them with cables from the Cable Box. The mouse is used to drag modules and cables."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutButton" type="Button" parent="BackLayer/Tut"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -94.3867
+margin_right = 70.0
+margin_bottom = -27.3867
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "NEXT"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 1
+
+[node name="Tut2" type="ColorRect" parent="BackLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -370.5
+margin_top = -240.5
+margin_right = 370.5
+margin_bottom = 240.5
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 3
+needed_left = 32
+needed_right = 32
+needed_bottom = 32
+
+[node name="Label" type="Label" parent="BackLayer/Tut2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -329.5
+margin_top = 46.0
+margin_right = 321.5
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 15 )
+text = "Modules can be deleted by dragging them back to the Parts Bin and cables can be deleted by dragging them back to the Cable Box.
+
+Hold the middle mouse button to drag this area around, and use the scroll wheel to zoom."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutButton" type="Button" parent="BackLayer/Tut2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -94.3867
+margin_right = 70.0
+margin_bottom = -27.3867
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "NEXT"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 1
+
+[node name="Tut3" type="ColorRect" parent="BackLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -370.0
+margin_top = -240.0
+margin_right = 422.0
+margin_bottom = 279.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 7
+needed_left = 32
+needed_right = 32
+needed_bottom = 32
+
+[node name="Label" type="Label" parent="BackLayer/Tut3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -329.5
+margin_top = 46.0
+margin_right = 321.5
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 15 )
+text = "This concludes the guide of this system. You can exit this mission with the button below, or from the Mission Reference Manual.
+
+You may also close this box and experiment with the Rover System, if you wish to mess with the controls a bit before starting a new mission."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinButton" type="Button" parent="BackLayer/Tut3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -363.989
+margin_top = -99.6633
+margin_right = -19.9888
+margin_bottom = -32.6633
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "CONCLUDE MISSION"
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutButton2" type="Button" parent="BackLayer/Tut3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 150.202
+margin_top = -100.605
+margin_right = 362.202
+margin_bottom = -33.605
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "CLOSE BOX"
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = 1
+
+[node name="MusicPlayer" parent="." instance=ExtResource( 31 )]
+which = 1
+
 [connection signal="gui_input" from="RoverViewLayer/Control/TextureRect" to="RoverViewLayer/Control/TextureRect" method="_gui_input"]
 [connection signal="pressed" from="RoverViewLayer/Control/ColorRect/ColorRect2/RunButton" to="RoverViewLayer/Control/ColorRect/ColorRect2/RunButton" method="_on_RunButton_pressed"]
+[connection signal="pressed" from="RoverViewLayer/Control/Tut/TutButton" to="RoverViewLayer/Control/Tut/TutButton" method="_on_TutButton_pressed"]
+[connection signal="pressed" from="RoverViewLayer/Control/Tut4/TutButton" to="RoverViewLayer/Control/Tut4/TutButton" method="_on_TutButton_pressed"]
+[connection signal="pressed" from="RoverViewLayer/Control/Tut5/TutButton" to="RoverViewLayer/Control/Tut5/TutButton" method="_on_TutButton_pressed"]
 [connection signal="gui_input" from="PartsBinLayer/Control/TextureRect" to="PartsBinLayer/Control/TextureRect" method="_gui_input"]
 [connection signal="mouse_entered" from="PartsBinLayer/Control/ColorRect" to="PartsBinLayer/Control/ColorRect" method="_on_ColorRect_mouse_entered"]
 [connection signal="mouse_exited" from="PartsBinLayer/Control/ColorRect" to="PartsBinLayer/Control/ColorRect" method="_on_ColorRect_mouse_exited"]
+[connection signal="pressed" from="PartsBinLayer/Control/Tut/TutButton" to="PartsBinLayer/Control/Tut/TutButton" method="_on_TutButton_pressed"]
 [connection signal="pressed" from="WinLayer/WinUI/Control/NextMission" to="WinLayer/WinUI" method="_on_NextMission_pressed"]
 [connection signal="pressed" from="WinLayer/WinUI/Control/Continue" to="WinLayer/WinUI" method="_on_Continue_pressed"]
 [connection signal="pressed" from="WinLayer/WinUI/Control/BackToMenu" to="WinLayer/WinUI" method="_on_BackToMenu_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc0_0/TutButton" to="TutLayer/Control/Panel/MissionDesc0_0/TutButton" method="_on_TutButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc0_2/WinButton2" to="TutLayer/Control/Panel/MissionDesc0_2/WinButton2" method="_on_WinButton_pressed"]
 [connection signal="gui_input" from="TutLayer/Control/TextureRect" to="TutLayer/Control/TextureRect" method="_gui_input"]
+[connection signal="pressed" from="TutLayer/Control/Tut/TutButton" to="TutLayer/Control/Tut/TutButton" method="_on_TutButton_pressed"]
+[connection signal="pressed" from="BackLayer/Tut/TutButton" to="BackLayer/Tut/TutButton" method="_on_TutButton_pressed"]
+[connection signal="pressed" from="BackLayer/Tut2/TutButton" to="BackLayer/Tut2/TutButton" method="_on_TutButton_pressed"]
+[connection signal="pressed" from="BackLayer/Tut3/WinButton" to="BackLayer/Tut3/WinButton" method="_on_WinButton_pressed"]
+[connection signal="pressed" from="BackLayer/Tut3/TutButton2" to="BackLayer/Tut3/TutButton2" method="_on_TutButton_pressed"]

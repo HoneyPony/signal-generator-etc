@@ -38,11 +38,25 @@ func reset_state():
 	
 	mission_status_label = null
 	
-	rover_sensor_front = 0.0
-	
 	enable_hover_count = 0
 	
 	moon_viewport = null
+	
+	tut_index = -1
+	
+	window_with_handle_left = null
+	window_with_handle_right = null
+	window_with_handle_bottom = null
+	
+	rover_sensor_front = false
+	rover_sensor_front_rock = false
+	rover_sensor_left = false
+	rover_sensor_left_rock = false
+	rover_sensor_right = false
+	rover_sensor_right_rock = false
+	
+	antenna_out = [ 0.0 , 0.0 , 0.0 , 0.0 ]
+	antenna_exp = [ false, false, false, false ]
 
 var dragged_jack = null
 var dragged_module = null
@@ -81,8 +95,22 @@ var mark_jack_for_trash = false
 
 var mission_status_label = null
 
-var rover_sensor_front = 0.0
+var rover_sensor_front = false
+var rover_sensor_front_rock = false
+var rover_sensor_left = false
+var rover_sensor_left_rock = false
+var rover_sensor_right = false
+var rover_sensor_right_rock = false
 
 var enable_hover_count = 0
 
 var moon_viewport = null
+
+var tut_index = -1
+
+var window_with_handle_left = null
+var window_with_handle_right = null
+var window_with_handle_bottom = null
+
+var antenna_out = [ 0.0 , 0.0 , 0.0 , 0.0 ]
+var antenna_exp = [ false, false, false, false ]
