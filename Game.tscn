@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://ui/cable_box.svg" type="Texture" id=1]
 [ext_resource path="res://ModuleProcessor.gd" type="Script" id=2]
@@ -20,7 +20,7 @@
 [ext_resource path="res://MoonViewport.gd" type="Script" id=18]
 [ext_resource path="res://ui/PartsBinInner.tscn" type="PackedScene" id=19]
 [ext_resource path="res://LayerFollowCamera.gd" type="Script" id=20]
-[ext_resource path="res://grid2.svg" type="Texture" id=21]
+[ext_resource path="res://greenscreengrid.svg" type="Texture" id=21]
 [ext_resource path="res://ui/ModuleTrash.gd" type="Script" id=22]
 [ext_resource path="res://font/BrassMono/regular.otf" type="DynamicFontData" id=23]
 [ext_resource path="res://ui/log_grip.svg" type="Texture" id=24]
@@ -34,6 +34,7 @@
 [ext_resource path="res://ui/ExitButton.gd" type="Script" id=32]
 [ext_resource path="res://ui/PauseUI.gd" type="Script" id=33]
 [ext_resource path="res://bfxr/Win.wav" type="AudioStream" id=34]
+[ext_resource path="res://ui/transition/Transition.tscn" type="PackedScene" id=35]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1000, 1000 )
@@ -632,9 +633,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 8.0
-margin_top = -153.0
+margin_top = -257.189
 margin_right = 749.0
-margin_bottom = 227.0
+margin_bottom = 248.811
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 28 )
 index = 1
@@ -652,7 +653,9 @@ margin_bottom = 169.0
 custom_fonts/font = ExtResource( 15 )
 text = "This, on the left, is the parts bin. You can drag the handle to open and close it.
 
-It contains all the modules you need (e.g. Signal Generator) to control the rover."
+It contains all the modules you need (e.g. Signal Generator) to control the rover.
+
+You can scroll the module list with the mouse wheel."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -695,6 +698,7 @@ script = ExtResource( 20 )
 layer = 5
 
 [node name="WinUI" type="ColorRect" parent="WinLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -1076,7 +1080,7 @@ anchor_right = 0.5
 margin_left = -475.0
 margin_top = 65.0
 margin_right = 476.0
-margin_bottom = 480.0
+margin_bottom = 416.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain, and welcome to your first mission!
@@ -1087,9 +1091,9 @@ You will need to place a Motor Control module in order to move the rover. The le
 
 A nice constant number can be generated with a Signal Generator.
 
-Finally, you will want to adjust the knobs of your modules to proper values. The Motor Control has a built-in Speed Multiplier which you may find useful now or later. In any case it should be larger than 0.
+Finally, you will want to adjust the knobs of your Signal Generator to a proper value.
 
-Note that the motors have a maximum speed. Past that point they will blow up, and become unusable until you push the Stop button in the Rover Control window (which will provide you with a fresh rover)."
+Motors have a maximum speed of 4, past which point they will malfunction. If your rover starts smoking, push the \"Stop\" button so you can adjust the speed and try again."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1175,7 +1179,7 @@ In particular, if your rover collides with another rover head-on, it will be des
 
 Luckily, the rover can sense if something is in front of it. You can use the Direction Sensor Input module to turn off the motor when something passes in front of the rover. The module provides sensors for the front, left, and right of the rover, and by default will sense both rocks and rovers (but can selectively sense either).
 
-The NOT module will also likely be useful here. The various MULTIPLY inputs that exist on some modules may also be useful."
+The NOT module will also likely be useful here. You may want to consider using the Multiply input on a Signal Generator as well."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1214,7 +1218,7 @@ text = "Hello Captain.
 
 Given that the rover can both move straight and turn in place, it is possible to perform navigation involving both straight motion and turns.
 
-In order to program a single fixed movement path, it is possible to use a Sequencer, such as the 8-Step Sequencer.
+In order to program a single fixed movement path, it is possible to use a Sequencer, (more specifically, a 8-Step Sequencer).
 
 The Sequencer provides a series of outputs, 0.0 and 1.0, in sequential order. This information is indicated by the lights on the Sequencer.
 
@@ -1693,6 +1697,8 @@ index = 1
 
 [node name="MusicPlayer" parent="." instance=ExtResource( 31 )]
 which = 1
+
+[node name="TransitionLayer" parent="." instance=ExtResource( 35 )]
 
 [connection signal="gui_input" from="RoverViewLayer/Control/TextureRect" to="RoverViewLayer/Control/TextureRect" method="_gui_input"]
 [connection signal="pressed" from="RoverViewLayer/Control/ColorRect/ColorRect2/RunButton" to="RoverViewLayer/Control/ColorRect/ColorRect2/RunButton" method="_on_RunButton_pressed"]

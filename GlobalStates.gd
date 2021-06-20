@@ -58,6 +58,19 @@ func reset_state():
 	antenna_out = [ 0.0 , 0.0 , 0.0 , 0.0 ]
 	antenna_exp = [ false, false, false, false ]
 	antenna_in = [ 0.0, 0.0, 0.0, 0.0 ]
+	
+	rover_m_left_p = 0.0
+	rover_m_left_r = 0.0
+	rover_m_right_p = 0.0
+	rover_m_right_r = 0.0
+	
+var transition = null
+
+func switch_scene(scn):
+	if transition != null:
+		transition.transition_to(scn)
+	else:
+		get_tree().change_scene_to(scn)
 
 var dragged_jack = null
 var dragged_module = null
@@ -116,3 +129,8 @@ var window_with_handle_bottom = null
 var antenna_out = [ 0.0 , 0.0 , 0.0 , 0.0 ]
 var antenna_exp = [ false, false, false, false ]
 var antenna_in = [ 0.0, 0.0, 0.0, 0.0 ]
+
+var rover_m_left_p = 0.0
+var rover_m_left_r = 0.0
+var rover_m_right_p = 0.0
+var rover_m_right_r = 0.0

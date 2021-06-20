@@ -196,6 +196,6 @@ __meta__ = {
 [node name="TimeDial" parent="." instance=ExtResource( 7 )]
 position = Vector2( 910, 210 )
 max_angle = 45.0
-min_angle = -225.0
+min_angle = -135.0
 rounding = 45.0
 init_rot = -45.0

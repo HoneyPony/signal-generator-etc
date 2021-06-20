@@ -2,8 +2,8 @@ extends ColorRect
 
 func _ready():
 	var mis = get_node("Control/FinalMis")
-	mis.visible = MoonLoader.moon_index >= MoonLoader.last_index()
-	if(MoonLoader.moon_index >= MoonLoader.last_index()):
+	mis.visible = GS.moon_index >= MoonLoader.last_index()
+	if(GS.moon_index >= MoonLoader.last_index()):
 		get_node("Control/NextMission").hide()
 
 func _process(delta):
@@ -16,7 +16,7 @@ func _process(delta):
 func _on_NextMission_pressed():
 	GS.moon_index += 1
 	#GS.reset_state()
-	get_tree().change_scene_to(MoonLoader.GameProxy)
+	GS.switch_scene(MoonLoader.GameProxy)
 
 
 func _on_Continue_pressed():
@@ -26,4 +26,4 @@ func _on_Continue_pressed():
 
 func _on_BackToMenu_pressed():
 	#GS.reset_state()
-	get_tree().change_scene_to(MoonLoader.MissionSelect)
+	GS.switch_scene(MoonLoader.MissionSelect)

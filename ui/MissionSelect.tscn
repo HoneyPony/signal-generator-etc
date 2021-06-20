@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://font/PoiretOne.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/MissionButton.gd" type="Script" id=2]
 [ext_resource path="res://font/PoiretOne32.tres" type="DynamicFont" id=3]
 [ext_resource path="res://ui/MouseLayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MusicPlayer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/transition/Transition.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
@@ -288,6 +289,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 index = -10
+
+[node name="TransitionLayer" parent="." instance=ExtResource( 6 )]
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MissionButton0" to="HBoxContainer/VBoxContainer/MissionButton0" method="_on_MissionButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MissionButton1" to="HBoxContainer/VBoxContainer/MissionButton1" method="_on_MissionButton_pressed"]

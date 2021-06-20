@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="420"
+   width="350"
    height="350"
-   viewBox="0 0 111.125 92.60417"
+   viewBox="0 0 92.604167 92.60417"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.0000001"
-     inkscape:cx="223.69058"
-     inkscape:cy="172.85598"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="73.847528"
+     inkscape:cy="263.82035"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -104,17 +104,17 @@
          y="10.757601"
          style="stroke-width:0.264583" /></text>
     <rect
-       style="opacity:0.999;fill:#9164d4;fill-opacity:1;stroke-width:0.215473"
+       style="opacity:0.999;fill:#9164d4;fill-opacity:1;stroke-width:0.19651"
        id="rect900"
-       width="110.06667"
+       width="91.545837"
        height="91.545837"
        x="0.5291667"
        y="0.5291667"
-       ry="1.9608293" />
+       ry="2.6156397" />
     <path
        id="rect5705"
        style="opacity:0.999;fill:#aa87de;fill-opacity:1;stroke-width:0.244461"
-       d="m 2.8176241,0.52916667 c -1.2678556,0 -2.28845742,1.28085163 -2.28845742,2.87200413 V 91.016667 H 106.88298 c 1.26126,0 2.27654,-1.274181 2.27654,-2.857056 V 0.52916667 Z"
+       d="m 2.8176241,0.52916667 c -1.2678556,0 -2.28845742,1.28085163 -2.28845742,2.87200413 V 91.016667 l 87.89717832,0 c 1.26126,0 2.27654,-1.274181 2.27654,-2.857056 V 0.52916667 Z"
        sodipodi:nodetypes="sscsscs" />
     <circle
        style="opacity:0.999;fill:#4d4d4d;stroke-width:0.12015"
@@ -161,7 +161,7 @@
     <circle
        style="opacity:0.999;fill:#4d4d4d;stroke-width:0.12015"
        id="circle5693"
-       cx="108.41302"
+       cx="89.892189"
        cy="2.7119792"
        r="1.1244792" />
     <rect
@@ -169,7 +169,7 @@
        id="rect5695"
        width="0.1889881"
        height="1.3281524"
-       x="108.31144"
+       x="89.790611"
        y="2.0263865" />
     <rect
        style="opacity:0.999;fill:#333333;stroke-width:0.183696"
@@ -177,12 +177,12 @@
        width="0.1889881"
        height="1.3281524"
        x="2.5959685"
-       y="-109.07001"
+       y="-90.549179"
        transform="rotate(90)" />
     <circle
        style="opacity:0.999;fill:#4d4d4d;stroke-width:0.12015"
        id="circle5699"
-       cx="108.41302"
+       cx="89.892189"
        cy="89.892067"
        r="1.1244792" />
     <rect
@@ -190,7 +190,7 @@
        id="rect5701"
        width="0.1889881"
        height="1.3281524"
-       x="108.31144"
+       x="89.790611"
        y="89.206474" />
     <rect
        style="opacity:0.999;fill:#333333;stroke-width:0.183696"
@@ -198,7 +198,7 @@
        width="0.1889881"
        height="1.3281524"
        x="89.776062"
-       y="-109.07001"
+       y="-90.549179"
        transform="rotate(90)" />
     <rect
        style="opacity:0.999;fill:#000000;fill-opacity:1;stroke-width:0.019329"
@@ -232,7 +232,7 @@
        aria-label="DATA CHANNEL 1"
        id="text8929"
        style="font-size:5.64444px;line-height:1.25;font-family:'Poiret One';-inkscape-font-specification:'Poiret One';stroke-width:0.264583"
-       transform="translate(43.391666)">
+       transform="translate(24.495711)">
       <path
          d="m 5.6455334,29.565438 v -4.558971 h 1.5250844 q 0.564444,0 1.0149137,0.135684 0.4504698,0.130256 0.7381191,0.352778 0.2930767,0.217093 0.4884612,0.521025 0.1953845,0.303931 0.2767947,0.624145 0.086837,0.320213 0.086837,0.672991 0,0.971495 -0.6784183,1.611921 -0.6729909,0.635 -1.6879047,0.635 z m 1.1451701,-0.982349 v 0.0054 h 0.4179057 q 0.5698714,0 0.987777,-0.34735 0.423333,-0.352778 0.423333,-0.960641 0,-0.569871 -0.4070509,-0.933503 -0.4016237,-0.36906 -1.0040591,-0.36906 H 6.7907035 Z"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:RubberNippleFactory;-inkscape-font-specification:RubberNippleFactory;stroke-width:0.264583"
@@ -286,7 +286,7 @@
        aria-label="DATA CHANNEL 2"
        id="text8933"
        style="font-size:5.64444px;line-height:1.25;font-family:'Poiret One';-inkscape-font-specification:'Poiret One';stroke-width:0.264583"
-       transform="translate(43.391666)">
+       transform="translate(24.495711)">
       <path
          d="m 5.6455334,48.08628 v -4.558971 h 1.5250844 q 0.564444,0 1.0149137,0.135684 0.4504698,0.130256 0.7381191,0.352777 0.2930767,0.217094 0.4884612,0.521025 0.1953845,0.303932 0.2767947,0.624145 0.086837,0.320214 0.086837,0.672991 0,0.971495 -0.6784183,1.611922 -0.6729909,0.635 -1.6879047,0.635 z m 1.1451701,-0.98235 v 0.0054 h 0.4179057 q 0.5698714,0 0.987777,-0.347351 0.423333,-0.352777 0.423333,-0.96064 0,-0.569871 -0.4070509,-0.933504 Q 7.8110446,44.498804 7.2086092,44.498804 H 6.7907035 Z"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:RubberNippleFactory;-inkscape-font-specification:RubberNippleFactory;stroke-width:0.264583"
@@ -340,7 +340,7 @@
        aria-label="DATA CHANNEL 3"
        id="text8937"
        style="font-size:5.64444px;line-height:1.25;font-family:'Poiret One';-inkscape-font-specification:'Poiret One';stroke-width:0.264583"
-       transform="translate(43.391666)">
+       transform="translate(24.495711)">
       <path
          d="m 5.6455334,66.607112 v -4.558971 h 1.5250844 q 0.564444,0 1.0149137,0.135684 0.4504698,0.130256 0.7381191,0.352777 0.2930767,0.217094 0.4884612,0.521025 0.1953845,0.303932 0.2767947,0.624145 0.086837,0.320214 0.086837,0.672991 0,0.971495 -0.6784183,1.611922 -0.6729909,0.635 -1.6879047,0.635 z m 1.1451701,-0.98235 v 0.0054 h 0.4179057 q 0.5698714,0 0.987777,-0.347351 0.423333,-0.352777 0.423333,-0.96064 0,-0.569871 -0.4070509,-0.933503 -0.4016237,-0.36906 -1.0040591,-0.36906 H 6.7907035 Z"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:RubberNippleFactory;-inkscape-font-specification:RubberNippleFactory;stroke-width:0.264583"
@@ -394,7 +394,7 @@
        aria-label="DATA CHANNEL 4"
        id="text8941"
        style="font-size:5.64444px;line-height:1.25;font-family:'Poiret One';-inkscape-font-specification:'Poiret One';stroke-width:0.264583"
-       transform="translate(43.391666)">
+       transform="translate(24.495711)">
       <path
          d="m 5.6455334,85.127948 v -4.558971 h 1.5250844 q 0.564444,0 1.0149137,0.135684 0.4504698,0.130256 0.7381191,0.352777 0.2930767,0.217094 0.4884612,0.521025 0.1953845,0.303932 0.2767947,0.624145 0.086837,0.320214 0.086837,0.672991 0,0.971495 -0.6784183,1.611922 Q 8.4243348,85.12252 7.409421,85.12252 Z m 1.1451701,-0.98235 v 0.0054 h 0.4179057 q 0.5698714,0 0.987777,-0.34735 0.423333,-0.352777 0.423333,-0.96064 0,-0.569871 -0.4070509,-0.933504 Q 7.8110446,81.540472 7.2086092,81.540472 H 6.7907035 Z"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:RubberNippleFactory;-inkscape-font-specification:RubberNippleFactory;stroke-width:0.264583"
@@ -447,7 +447,8 @@
     <g
        aria-label="ANTENNA INPUT"
        id="text10145"
-       style="font-size:10.5833px;line-height:1.25;font-family:'Poiret One';-inkscape-font-specification:'Poiret One';stroke-width:0.264583">
+       style="font-size:10.5833px;line-height:1.25;font-family:'Poiret One';-inkscape-font-specification:'Poiret One';stroke-width:0.264583"
+       transform="translate(-9.541522)">
       <path
          d="m 20.944402,9.2022337 3.968737,8.1279743 h -0.370415 l -1.502829,-3.026824 h -4.243903 l -1.481662,3.026824 h -0.328082 z m -0.03175,0.7302477 -1.979077,4.0639866 h 3.979321 z"
          style="font-size:10.5833px;stroke-width:0.264583"

@@ -16,5 +16,6 @@ func _on_Continue_pressed():
 func _on_BackToMenu_pressed():
 	
 	#GS.reset_state()
-	get_tree().change_scene_to(MoonLoader.MissionSelect)
+	GS.switch_scene(MoonLoader.MissionSelect)
+	#get_tree().change_scene_to(MoonLoader.MissionSelect)
 	get_tree().paused = false

@@ -5,7 +5,7 @@ onready var inputs = [
 	$JackIn2,
 	$JackIn3,
 	$JackIn4,
-	$JackIn5,
+	#$JackIn5,
 ]
 
 func get_inputs():
@@ -33,7 +33,11 @@ func speed_mul():
 	return d * j
 
 func mod_process(delta):
-	var cur_speed = speed_mul() * speed
+	GS.rover_m_left_p += $JackIn.get_state()
+	GS.rover_m_left_r += $JackIn2.get_state()
+	GS.rover_m_right_p += $JackIn3.get_state()
+	GS.rover_m_right_r += $JackIn4.get_state()
+	#var cur_speed = speed_mul() * speed
 	
-	GS.left_motor_power = calc($JackIn, $JackIn2) * cur_speed
-	GS.right_motor_power = calc($JackIn3, $JackIn4) * cur_speed
+	#GS.left_motor_power = calc($JackIn, $JackIn2) * cur_speed
+	#GS.right_motor_power = calc($JackIn3, $JackIn4) * cur_speed

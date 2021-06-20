@@ -8,6 +8,15 @@ var right_motor_functioning = true
 
 var is_collided = false
 
+func reverse_to_sign(input):
+	var b = false
+	if abs(input) > 0.02:
+		b = true
+	
+	if b:
+		return -1
+	return 1
+
 func _ready():
 	GS.rover = self
 	
@@ -94,7 +103,13 @@ func handle_motor_sfx(v, delta):
 		time_positive = 0
 		$Run.playing = false
 
+const motor_speed = 32
+
 func _physics_process(delta):
+	
+	GS.left_motor_power = GS.rover_m_left_p * reverse_to_sign(GS.rover_m_left_r) * motor_speed
+	GS.right_motor_power = GS.rover_m_right_p * reverse_to_sign(GS.rover_m_right_r) * motor_speed
+	
 	GS.rover_sensor_front = read_sensor($FrontSensor, 0)
 	GS.rover_sensor_left = read_sensor($LeftSensor, -90)
 	GS.rover_sensor_right = read_sensor($RightSensor, 90)

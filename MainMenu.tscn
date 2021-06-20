@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://font/PoiretOne.tres" type="DynamicFont" id=1]
 [ext_resource path="res://MainMenu.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://ui/slider/grabber_two.svg" type="Texture" id=8]
 [ext_resource path="res://ui/VolumeSlider.gd" type="Script" id=9]
 [ext_resource path="res://MusicPlayer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ui/transition/Transition.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -258,6 +259,8 @@ __meta__ = {
 bus_name = "Music"
 
 [node name="MusicPlayer" parent="." instance=ExtResource( 10 )]
+
+[node name="TransitionLayer" parent="." instance=ExtResource( 11 )]
 
 [connection signal="pressed" from="Control/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Control/OptButton" to="." method="_on_OptButton_pressed"]

@@ -54,6 +54,14 @@ func process_module(module, delta):
 	module.mod_process(delta)
 
 func _physics_process(delta):
+	GS.rover_m_left_p = 0.0
+	GS.rover_m_left_r = 0.0
+	GS.rover_m_right_p = 0.0
+	GS.rover_m_right_r = 0.0
+	
+	for i in range(0, 4):
+		GS.antenna_out[i] = 0.0
+	
 	#print("START PROCESS")
 	reset_visited()
 	

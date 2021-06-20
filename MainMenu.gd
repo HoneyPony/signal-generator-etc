@@ -7,7 +7,7 @@ func _ready():
 
 func _on_PlayButton_pressed():
 	#GS.reset_state()
-	get_tree().change_scene_to(MoonLoader.MissionSelect)
+	GS.switch_scene(MoonLoader.MissionSelect)
 	
 
 

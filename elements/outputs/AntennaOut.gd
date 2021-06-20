@@ -27,7 +27,7 @@ func get_inputs():
 func mod_process(delta):
 	for i in range(0, 4):
 		var s = inputs[i].get_state()
-		GS.antenna_out[i] = s
+		GS.antenna_out[i] += s
 		
 		leds[i].set_led(boolstate(s))
 		

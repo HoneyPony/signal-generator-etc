@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="139.45985"
-     inkscape:cy="241.26619"
+     inkscape:zoom="1.4"
+     inkscape:cx="859.209"
+     inkscape:cy="241.34786"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -2347,5 +2347,12 @@ SEQUENCER"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:RubberNippleFactory;-inkscape-font-specification:RubberNippleFactory;stroke-width:0.264583"
          id="path9293" />
     </g>
+    <rect
+       style="opacity:0.999;fill:#808080;stroke:none;stroke-width:0.449792;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       id="rect11632"
+       width="31.183035"
+       height="25.324406"
+       x="206.18602"
+       y="50.45982" />
   </g>
 </svg>

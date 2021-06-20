@@ -7,7 +7,7 @@
 [ext_resource path="res://elements/inputs/antenna_input.svg" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 213, 173 )
+extents = Vector2( 179, 173 )
 
 [node name="AntennaIn" type="Node2D"]
 script = ExtResource( 4 )
@@ -23,45 +23,45 @@ __meta__ = {
 [node name="ModuleDragger" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ModuleDragger"]
-position = Vector2( 213.167, 175 )
+position = Vector2( 180, 175 )
 shape = SubResource( 1 )
 
 [node name="JackIn" parent="." instance=ExtResource( 1 )]
-position = Vector2( 418, 105 )
+position = Vector2( 348, 105 )
 rotation = 3.14159
 is_input = false
 
 [node name="JackIn2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 418, 175 )
+position = Vector2( 348, 175 )
 rotation = 3.14159
 is_input = false
 
 [node name="JackIn3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 418, 245 )
+position = Vector2( 348, 245 )
 rotation = 3.14159
 is_input = false
 
 [node name="JackIn4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 418, 315 )
+position = Vector2( 348, 315 )
 rotation = 3.14159
 is_input = false
 
 [node name="LED1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 138, 105 )
+position = Vector2( 70, 105 )
 off_color = Color( 0, 0.129412, 0.294118, 1 )
 on_color = Color( 0.219608, 0.8, 1, 1 )
 
 [node name="LED2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 138, 175 )
+position = Vector2( 70, 175 )
 off_color = Color( 0, 0.129412, 0.294118, 1 )
 on_color = Color( 0.219608, 0.8, 1, 1 )
 
 [node name="LED3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 138, 245 )
+position = Vector2( 70, 245 )
 off_color = Color( 0, 0.129412, 0.294118, 1 )
 on_color = Color( 0.219608, 0.8, 1, 1 )
 
 [node name="LED4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 138, 315 )
+position = Vector2( 70, 315 )
 off_color = Color( 0, 0.129412, 0.294118, 1 )
 on_color = Color( 0.219608, 0.8, 1, 1 )
