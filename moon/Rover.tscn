@@ -200,7 +200,7 @@ bus = "SFX"
 
 [node name="Run" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -10.0
+volume_db = -8.0
 bus = "SFX"
 
 [node name="Explode" type="AudioStreamPlayer" parent="."]

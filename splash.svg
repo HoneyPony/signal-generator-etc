@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000"
+   height="800"
+   viewBox="0 0 264.58333 211.66667"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="splash.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="479.49959"
+     inkscape:cy="651.33003"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1620"
+     inkscape:window-height="1018"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.999;fill:#000000;stroke:#000000;stroke-width:0.264583"
+       id="rect838"
+       width="299.34186"
+       height="223.43733"
+       x="-16.570711"
+       y="-9.6217022" />
+    <text
+       xml:space="preserve"
+       style="font-size:21.1667px;line-height:1.25;font-family:'Poiret One';-inkscape-font-specification:'Poiret One';stroke-width:0.264583;fill:#ffffff;"
+       x="23.036203"
+       y="91.561958"
+       id="text832"><tspan
+         sodipodi:role="line"
+         id="tspan830"
+         x="23.036203"
+         y="91.561958"
+         style="font-size:21.1667px;stroke-width:0.264583;fill:#ffffff;">SIGNAL GENERATOR ETC</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14.1111px;line-height:1.25;font-family:'Poiret One';-inkscape-font-specification:'Poiret One';stroke-width:0.264583;fill:#ffffff;"
+       x="81.835503"
+       y="112.40898"
+       id="text836"><tspan
+         sodipodi:role="line"
+         id="tspan834"
+         x="81.835503"
+         y="112.40898"
+         style="font-size:14.1111px;stroke-width:0.264583;fill:#ffffff;">NOW LOADING</tspan></text>
+  </g>
+</svg>

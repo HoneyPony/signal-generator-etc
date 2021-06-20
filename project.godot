@@ -12,7 +12,9 @@ config_version=4
 
 config/name="SIGNAL GENERATOR ETC"
 run/main_scene="res://MainMenu.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://splash_png.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://icon.svg"
 
 [autoload]
 
