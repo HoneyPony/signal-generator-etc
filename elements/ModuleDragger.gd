@@ -86,6 +86,10 @@ func end_drag():
 			module.queue_free()
 			self.queue_free()
 			
+			if has_been_placed:
+				Music.get_node("ModTrash").pitch_scale = rand_range(0.95, 1.05)
+				Music.get_node("ModTrash").play()
+			
 			#print("Module deleted")
 		
 	set_collision_layer_bit(3, false)
@@ -94,6 +98,9 @@ func end_drag():
 	has_been_placed = true
 	
 	
+func _ready():
+	$Pickup.pitch_scale = rand_range(0.95, 1.05)
+	$Pickup.play()
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:

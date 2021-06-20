@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rover_motor_spindown.wav-b578fe31181734d2f3c351ede3a0600f.sample"
+
+[deps]
+
+source_file="res://sounds/rover_motor_spindown.wav"
+dest_files=[ "res://.import/rover_motor_spindown.wav-b578fe31181734d2f3c351ede3a0600f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

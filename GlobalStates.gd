@@ -57,6 +57,7 @@ func reset_state():
 	
 	antenna_out = [ 0.0 , 0.0 , 0.0 , 0.0 ]
 	antenna_exp = [ false, false, false, false ]
+	antenna_in = [ 0.0, 0.0, 0.0, 0.0 ]
 
 var dragged_jack = null
 var dragged_module = null
@@ -114,3 +115,4 @@ var window_with_handle_bottom = null
 
 var antenna_out = [ 0.0 , 0.0 , 0.0 , 0.0 ]
 var antenna_exp = [ false, false, false, false ]
+var antenna_in = [ 0.0, 0.0, 0.0, 0.0 ]

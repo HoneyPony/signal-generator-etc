@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rover_sample_2.wav-c2a98ff17f85274e5ff0a99a9503b96c.sample"
+
+[deps]
+
+source_file="res://sfxia/rover_sample_2.wav"
+dest_files=[ "res://.import/rover_sample_2.wav-c2a98ff17f85274e5ff0a99a9503b96c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://elements/Jack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://elements/PatchCable.gd" type="Script" id=2]
+[ext_resource path="res://sounds/module/mod_pickup.wav" type="AudioStream" id=3]
 
 [node name="PatchCable" type="Node2D"]
 z_index = 101
@@ -15,3 +16,8 @@ z_as_relative = false
 position = Vector2( 51.2816, 119.694 )
 rotation = -3.14159
 z_as_relative = false
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 2.0
+bus = "ModuleSFX"

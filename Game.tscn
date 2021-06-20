@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://ui/cable_box.svg" type="Texture" id=1]
 [ext_resource path="res://ModuleProcessor.gd" type="Script" id=2]
@@ -20,7 +20,7 @@
 [ext_resource path="res://MoonViewport.gd" type="Script" id=18]
 [ext_resource path="res://ui/PartsBinInner.tscn" type="PackedScene" id=19]
 [ext_resource path="res://LayerFollowCamera.gd" type="Script" id=20]
-[ext_resource path="res://greenscreengrid.svg" type="Texture" id=21]
+[ext_resource path="res://grid2.svg" type="Texture" id=21]
 [ext_resource path="res://ui/ModuleTrash.gd" type="Script" id=22]
 [ext_resource path="res://font/BrassMono/regular.otf" type="DynamicFontData" id=23]
 [ext_resource path="res://ui/log_grip.svg" type="Texture" id=24]
@@ -33,6 +33,7 @@
 [ext_resource path="res://MusicPlayer.tscn" type="PackedScene" id=31]
 [ext_resource path="res://ui/ExitButton.gd" type="Script" id=32]
 [ext_resource path="res://ui/PauseUI.gd" type="Script" id=33]
+[ext_resource path="res://bfxr/Win.wav" type="AudioStream" id=34]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1000, 1000 )
@@ -694,7 +695,6 @@ script = ExtResource( 20 )
 layer = 5
 
 [node name="WinUI" type="ColorRect" parent="WinLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -728,6 +728,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 115.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FinalMis" type="ColorRect" parent="WinLayer/WinUI/Control"]
+visible = false
+anchor_right = 1.0
+margin_top = -30.9371
+margin_bottom = 85.0629
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WinLayer/WinUI/Control/FinalMis"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 9 )
+text = "You completed the final mission!"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -784,6 +805,11 @@ text = "BACK TO MENU"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Win" type="AudioStreamPlayer" parent="WinLayer/WinUI"]
+stream = ExtResource( 34 )
+volume_db = -3.0
+bus = "SFX"
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 6
@@ -1313,6 +1339,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MissionDescNavA" type="Label" parent="TutLayer/Control/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 436.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+text = "Hello Captain.
+
+The rover seems to be stuck in a somewhat complicated rock formation. 
+
+The good news is we have a way out. The rover not only has an antenna output, it also has an antenna input. This allows us to send some information remotely, such as when to turn.
+
+The green circles on the Rover View show you where the antenna will be broadcasting a turn command. As you can see, if all commands are executed successfully, the rover will reach its destinatino.
+
+So, you can run the robot at full speed going forward. Then, you should turn left when there is a non-zero number on Data Channel 1 of the Antenna Input , and turn right when there is a non-zero number on Data Channel 2 of the Antenna Input.
+
+Unfortunately, the data being sent over the antenna is not correctly formatted to turn 90 degrees as it should be. It will actually only turn the rover about 60 degrees if the antenna is wired directly to the motor Reverse signal.
+
+It is recommended to use a Sequencer to generate a half-second impulse (which corresponds to 90 degrees at full speed) much like the half-second signal Sequencer used in Hall Monitor II."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDescNavA"]
+visible = false
+margin_left = 681.809
+margin_top = 496.219
+margin_right = 920.809
+margin_bottom = 563.219
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MissionDescSensN" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
@@ -1645,6 +1718,7 @@ which = 1
 [connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc4/ExitButton" to="TutLayer/Control/Panel/MissionDesc4/ExitButton" method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="TutLayer/Control/Panel/MissionDescHMI/ExitButton" to="TutLayer/Control/Panel/MissionDescHMI/ExitButton" method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="TutLayer/Control/Panel/MissionDescHMII/ExitButton" to="TutLayer/Control/Panel/MissionDescHMII/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDescNavA/ExitButton" to="TutLayer/Control/Panel/MissionDescNavA/ExitButton" method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="TutLayer/Control/Panel/MissionDescSensN/ExitButton" to="TutLayer/Control/Panel/MissionDescSensN/ExitButton" method="_on_ExitButton_pressed"]
 [connection signal="gui_input" from="TutLayer/Control/TextureRect" to="TutLayer/Control/TextureRect" method="_gui_input"]
 [connection signal="pressed" from="TutLayer/Control/Tut/TutButton" to="TutLayer/Control/Tut/TutButton" method="_on_TutButton_pressed"]

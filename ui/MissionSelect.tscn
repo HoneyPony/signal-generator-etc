@@ -71,10 +71,10 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -467.5
-margin_top = 123.0
-margin_right = 467.5
-margin_bottom = 606.0
+margin_left = -495.0
+margin_top = 124.591
+margin_right = 495.0
+margin_bottom = 607.591
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -181,14 +181,14 @@ index = 4
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 475.0
-margin_right = 935.0
+margin_right = 990.0
 margin_bottom = 483.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MissionButton6" type="Button" parent="HBoxContainer/VBoxContainer2"]
-margin_right = 460.0
+margin_right = 515.0
 margin_bottom = 71.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -207,7 +207,7 @@ index = 5
 
 [node name="MissionButton7" type="Button" parent="HBoxContainer/VBoxContainer2"]
 margin_top = 75.0
-margin_right = 460.0
+margin_right = 515.0
 margin_bottom = 146.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -224,9 +224,9 @@ __meta__ = {
 }
 index = 6
 
-[node name="MissionButton5" type="Button" parent="HBoxContainer/VBoxContainer2"]
+[node name="MissionButton8" type="Button" parent="HBoxContainer/VBoxContainer2"]
 margin_top = 150.0
-margin_right = 460.0
+margin_right = 515.0
 margin_bottom = 221.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -235,13 +235,32 @@ custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-text = "Mission 7: Navigating by Sight"
+text = "Mission 7: Navigating by Antenna"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 index = 7
+
+[node name="MissionButton5" type="Button" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 225.0
+margin_right = 515.0
+margin_bottom = 296.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Mission 8: Navigating by Sight"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+index = 8
 
 [node name="MouseLayer" parent="." instance=ExtResource( 4 )]
 
@@ -277,5 +296,6 @@ index = -10
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/MissionButton4" to="HBoxContainer/VBoxContainer/MissionButton4" method="_on_MissionButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/MissionButton6" to="HBoxContainer/VBoxContainer2/MissionButton6" method="_on_MissionButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/MissionButton7" to="HBoxContainer/VBoxContainer2/MissionButton7" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/MissionButton8" to="HBoxContainer/VBoxContainer2/MissionButton8" method="_on_MissionButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/MissionButton5" to="HBoxContainer/VBoxContainer2/MissionButton5" method="_on_MissionButton_pressed"]
 [connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_MissionButton_pressed"]

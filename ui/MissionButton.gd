@@ -10,5 +10,6 @@ func _on_MissionButton_pressed():
 		return
 	
 	GS.moon_index = index
-	GS.reset_state()
-	get_tree().change_scene_to(MoonLoader.Game)
+	#GS.reset_state()
+	#get_tree().change_scene_to(MoonLoader.Game)
+	get_tree().change_scene_to(MoonLoader.GameProxy)

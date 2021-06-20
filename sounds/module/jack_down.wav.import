@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/jack_down.wav-b4a5518a81867f69cd3341f6f1e8992e.sample"
+
+[deps]
+
+source_file="res://sounds/module/jack_down.wav"
+dest_files=[ "res://.import/jack_down.wav-b4a5518a81867f69cd3341f6f1e8992e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

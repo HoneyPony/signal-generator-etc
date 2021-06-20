@@ -109,7 +109,10 @@ func move_jack_two():
 func advance_spawn_state(which):
 	if which == $Jack1 and cur_mode == Mode.Spawn:
 		cur_mode = Mode.Spawning
-
+		
+		#$Pickup.pitch_scale = rand_range(0.95, 1.05)
+		#$Pickup.play()
+#
 func _process(delta):
 	
 	if cur_mode == Mode.Spawn:

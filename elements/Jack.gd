@@ -93,6 +93,13 @@ func end_drag():
 				deconnect_plug()
 			
 			get_parent().queue_free()
+			
+			Music.get_node("ModTrash").pitch_scale = rand_range(0.95, 1.05)
+			Music.get_node("ModTrash").play()
+		else:
+			if plug_coupling == null:
+				$Down.pitch_scale = rand_range(0.95, 1.05)
+				$Down.play()
 	
 func _physics_process(delta):
 	if GS.run_rover:
@@ -262,6 +269,9 @@ func _physics_process(delta):
 					dragging = true
 					
 					get_parent().advance_spawn_state(self)
+					
+					$Up.pitch_scale = rand_range(0.95, 1.05)
+					$Up.play()
 					
 					#drag_center = get_global_mouse_position() - global_position
 					$Hotspot.global_position = get_global_mouse_position()

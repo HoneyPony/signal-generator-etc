@@ -31,26 +31,32 @@ shape = SubResource( 1 )
 [node name="JackOut" parent="." instance=ExtResource( 2 )]
 position = Vector2( 418, 105 )
 rotation = -3.14159
+is_input = false
 
 [node name="JackOut2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 418, 175 )
 rotation = -3.14159
+is_input = false
 
 [node name="JackOut3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 418, 245 )
 rotation = -3.14159
+is_input = false
 
 [node name="JackOut4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 418, 315 )
 rotation = -3.14159
+is_input = false
 
 [node name="JackOut5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 418, 385 )
 rotation = -3.14159
+is_input = false
 
 [node name="JackOut6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 418, 455 )
 rotation = -3.14159
+is_input = false
 
 [node name="RoverS" parent="." instance=ExtResource( 3 )]
 position = Vector2( 245, 175 )

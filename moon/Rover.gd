@@ -24,6 +24,7 @@ func _ready():
 	for i in range(0, 4):
 		GS.antenna_out[i] = 0.0
 		GS.antenna_exp[i] = false
+		GS.antenna_in[i] = 0.0
 	
 	
 	$RoverSmokeL.visible = false
@@ -71,6 +72,28 @@ func read_rock_s(s):
 	
 var disable_90_rounding = false
 
+var last_vel = 0
+
+var time_positive = 0
+
+func handle_motor_sfx(v, delta):
+	if last_vel < 0.0001:
+		if v > 0.0001:
+			$SpinUp.play()
+	else:
+		if v < 0.0001:
+			if left_motor_functioning and right_motor_functioning and not is_collided:
+				$SpinDown.play()
+	last_vel = v
+	
+	if v > 0.0001:
+		time_positive += delta
+		if time_positive >= 0.43:
+			$Run.playing = true
+	else:
+		time_positive = 0
+		$Run.playing = false
+
 func _physics_process(delta):
 	GS.rover_sensor_front = read_sensor($FrontSensor, 0)
 	GS.rover_sensor_left = read_sensor($LeftSensor, -90)
@@ -83,9 +106,11 @@ func _physics_process(delta):
 		GS.run_rover = false
 	
 	if not GS.run_rover:
+		handle_motor_sfx(0, delta)
 		return
 		
 	if is_collided:
+		handle_motor_sfx(0, delta)
 		return
 		
 	var snap_90 = round(rotation_degrees / 90) * 90
@@ -100,9 +125,16 @@ func _physics_process(delta):
 	var sideways = polar2cartesian(1, rotation + PI / 2.0)
 	
 	if abs(GS.left_motor_power / 32.0) > 4.0:
+		if left_motor_functioning:
+			$Explode.play()
+		
 		left_motor_functioning = false
 		$RoverSmokeL.visible = true
+		
 	if abs(GS.right_motor_power / 32.0) > 4.0:
+		if right_motor_functioning:
+			$Explode.play()
+		
 		right_motor_functioning = false
 		$RoverSmokeR.visible = true
 	
@@ -111,6 +143,7 @@ func _physics_process(delta):
 	
 	if not left_motor_functioning:
 		l_delta = Vector2.ZERO
+		
 	if not right_motor_functioning:
 		r_delta = Vector2.ZERO
 	
@@ -147,6 +180,15 @@ func _physics_process(delta):
 	var needed_vel = (calc_global_position - global_position)
 	move_and_collide(needed_vel)
 	
+	var mp = 0
+	if left_motor_functioning:
+		mp += abs(GS.left_motor_power)
+	if right_motor_functioning:
+		mp += abs(GS.right_motor_power)
+	handle_motor_sfx(mp, delta)
+	
+	
+	
 	#GS.rover_sensor_front = read_front_sensor()
 	#read_front_sensor()
 	#read_front_rocks()
@@ -157,5 +199,7 @@ func _physics_process(delta):
 func _on_CollisionWithRover_body_entered(body):
 	if body.is_in_group("ARover"):
 		collide_rover()
+		
+		$Explode.play()
 		
 		body.is_collided = true

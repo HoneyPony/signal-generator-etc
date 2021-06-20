@@ -8,10 +8,14 @@ onready var descriptions = [
 	$MissionDesc4,
 	$MissionDescHMI,
 	$MissionDescHMII,
+	$MissionDescNavA,
 	$MissionDescSensN
 ]
 
 func _ready():
+	if GS.moon_index >= descriptions.size():
+		GS.moon_index = descriptions.size() - 1
+	
 	$MRMLabel.text = "Mission Reference Manual: \"" + MoonLoader.titles[GS.moon_index] + "\""
 	
 	var desc: Label = descriptions[GS.moon_index]
