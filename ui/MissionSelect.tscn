@@ -68,18 +68,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -221.031
-margin_top = 123.037
-margin_right = 227.969
-margin_bottom = 269.037
+margin_left = -467.5
+margin_top = 123.0
+margin_right = 467.5
+margin_bottom = 606.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MissionButton0" type="Button" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 471.0
+margin_bottom = 483.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionButton0" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_right = 471.0
 margin_bottom = 71.0
 custom_styles/hover = SubResource( 1 )
@@ -96,7 +103,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MissionButton1" type="Button" parent="VBoxContainer"]
+[node name="MissionButton1" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_top = 75.0
 margin_right = 471.0
 margin_bottom = 146.0
@@ -115,7 +122,7 @@ __meta__ = {
 }
 index = 1
 
-[node name="MissionButton2" type="Button" parent="VBoxContainer"]
+[node name="MissionButton2" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_top = 150.0
 margin_right = 471.0
 margin_bottom = 221.0
@@ -134,7 +141,7 @@ __meta__ = {
 }
 index = 2
 
-[node name="MissionButton3" type="Button" parent="VBoxContainer"]
+[node name="MissionButton3" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_top = 225.0
 margin_right = 471.0
 margin_bottom = 296.0
@@ -153,7 +160,7 @@ __meta__ = {
 }
 index = 3
 
-[node name="MissionButton4" type="Button" parent="VBoxContainer"]
+[node name="MissionButton4" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_top = 300.0
 margin_right = 471.0
 margin_bottom = 371.0
@@ -172,10 +179,17 @@ __meta__ = {
 }
 index = 4
 
-[node name="MissionButton6" type="Button" parent="VBoxContainer"]
-margin_top = 375.0
-margin_right = 471.0
-margin_bottom = 446.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 475.0
+margin_right = 935.0
+margin_bottom = 483.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionButton6" type="Button" parent="HBoxContainer/VBoxContainer2"]
+margin_right = 460.0
+margin_bottom = 71.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
@@ -191,10 +205,10 @@ __meta__ = {
 }
 index = 5
 
-[node name="MissionButton7" type="Button" parent="VBoxContainer"]
-margin_top = 450.0
-margin_right = 471.0
-margin_bottom = 521.0
+[node name="MissionButton7" type="Button" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 75.0
+margin_right = 460.0
+margin_bottom = 146.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
@@ -210,10 +224,10 @@ __meta__ = {
 }
 index = 6
 
-[node name="MissionButton5" type="Button" parent="VBoxContainer"]
-margin_top = 525.0
-margin_right = 471.0
-margin_bottom = 596.0
+[node name="MissionButton5" type="Button" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 150.0
+margin_right = 460.0
+margin_bottom = 221.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
@@ -233,11 +247,35 @@ index = 7
 
 [node name="MusicPlayer" parent="." instance=ExtResource( 5 )]
 
-[connection signal="pressed" from="VBoxContainer/MissionButton0" to="VBoxContainer/MissionButton0" method="_on_MissionButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MissionButton1" to="VBoxContainer/MissionButton1" method="_on_MissionButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MissionButton2" to="VBoxContainer/MissionButton2" method="_on_MissionButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MissionButton3" to="VBoxContainer/MissionButton3" method="_on_MissionButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MissionButton4" to="VBoxContainer/MissionButton4" method="_on_MissionButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MissionButton6" to="VBoxContainer/MissionButton6" method="_on_MissionButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MissionButton7" to="VBoxContainer/MissionButton7" method="_on_MissionButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/MissionButton5" to="VBoxContainer/MissionButton5" method="_on_MissionButton_pressed"]
+[node name="ExitButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -296.608
+margin_top = -108.798
+margin_right = -29.6082
+margin_bottom = -37.7976
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "BACK TO MENU"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+index = -10
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MissionButton0" to="HBoxContainer/VBoxContainer/MissionButton0" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MissionButton1" to="HBoxContainer/VBoxContainer/MissionButton1" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MissionButton2" to="HBoxContainer/VBoxContainer/MissionButton2" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MissionButton3" to="HBoxContainer/VBoxContainer/MissionButton3" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MissionButton4" to="HBoxContainer/VBoxContainer/MissionButton4" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/MissionButton6" to="HBoxContainer/VBoxContainer2/MissionButton6" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/MissionButton7" to="HBoxContainer/VBoxContainer2/MissionButton7" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/MissionButton5" to="HBoxContainer/VBoxContainer2/MissionButton5" method="_on_MissionButton_pressed"]
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_MissionButton_pressed"]

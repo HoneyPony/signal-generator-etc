@@ -1,24 +1,57 @@
 extends ColorRect
 
+export var count = 9
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 var scroll = 0
+var max_scroll = 0
 
-# Called when the node enters the scene tree for the first time.
+var part_arr = []
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	part_arr.resize(count)
+	
+	for i in get_child_count():
+		var c: Control = get_child(i)
+		
+		var index = int(c.rect_position.y / 200)
+		part_arr[index] = c
+		
+func avail_height():
+	return get_viewport().size.y - 76 - 16
+		
+func layout_parts():
+	var columns = 1
+	var width = rect_size.x
+	
+	if width >= 400:
+		columns = 2
+		
+	var margin = (width - (columns * 200)) * 0.5
+	
+	var column_number = 0
+	var row_number = 0
+	
+	for p in part_arr:
+		p.rect_position = Vector2(margin + column_number * 200, row_number * 200)
+		
+		column_number += 1
+		if column_number >= columns:
+			column_number = 0
+			row_number += 1
+			
+	max_scroll = ((row_number) * 200) - avail_height()# - rect_size.y
+	max_scroll = max(max_scroll, 0)
 
 func calc_scroll():
-	scroll = min(scroll, 0)
+	scroll = clamp(scroll, -max_scroll, 0)
 	margin_top = scroll
+	
+func _process(delta):
+	if scroll < -max_scroll:
+		calc_scroll()
+	
+	layout_parts()
 
 func _on_ColorRect_gui_input(event):
 	if event is InputEventMouseButton:

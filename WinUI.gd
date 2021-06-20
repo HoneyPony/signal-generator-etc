@@ -16,4 +16,5 @@ func _on_Continue_pressed():
 
 
 func _on_BackToMenu_pressed():
+	GS.reset_state()
 	get_tree().change_scene("res://MainMenu.tscn")

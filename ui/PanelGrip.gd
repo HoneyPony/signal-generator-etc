@@ -52,7 +52,7 @@ func calc_target():
 		#actual_margin += (needed_margin - actual_margin) * 0.2
 				
 		get_parent().margin_right = needed_margin
-		colorrect.margin_left = min(-400 + needed_margin - 32, 0)
+		colorrect.margin_left = min(-250 + needed_margin - 32, 0)
 
 func _process(delta):
 	

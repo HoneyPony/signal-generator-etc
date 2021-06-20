@@ -1,12 +1,13 @@
 extends Control
 
-var MissionSelect = preload("res://ui/MissionSelect.tscn")
+
 
 func _ready():
 	$OptMenu.hide()
 
 func _on_PlayButton_pressed():
-	get_tree().change_scene_to(MissionSelect)
+	GS.reset_state()
+	get_tree().change_scene_to(MoonLoader.MissionSelect)
 	
 
 

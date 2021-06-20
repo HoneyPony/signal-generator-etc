@@ -1,6 +1,7 @@
 extends Node
 
 var Game = preload("res://Game.tscn")
+var MissionSelect = preload("res://ui/MissionSelect.tscn")
 
 var moons = [
 	preload("res://moon/Moon0.tscn"),

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://ui/cable_box.svg" type="Texture" id=1]
 [ext_resource path="res://ModuleProcessor.gd" type="Script" id=2]
@@ -20,7 +20,7 @@
 [ext_resource path="res://MoonViewport.gd" type="Script" id=18]
 [ext_resource path="res://ui/PartsBinInner.tscn" type="PackedScene" id=19]
 [ext_resource path="res://LayerFollowCamera.gd" type="Script" id=20]
-[ext_resource path="res://grid2.svg" type="Texture" id=21]
+[ext_resource path="res://greenscreengrid.svg" type="Texture" id=21]
 [ext_resource path="res://ui/ModuleTrash.gd" type="Script" id=22]
 [ext_resource path="res://font/BrassMono/regular.otf" type="DynamicFontData" id=23]
 [ext_resource path="res://ui/log_grip.svg" type="Texture" id=24]
@@ -31,6 +31,8 @@
 [ext_resource path="res://ui/WinButton.gd" type="Script" id=29]
 [ext_resource path="res://ui/MissionDesc0.gd" type="Script" id=30]
 [ext_resource path="res://MusicPlayer.tscn" type="PackedScene" id=31]
+[ext_resource path="res://ui/ExitButton.gd" type="Script" id=32]
+[ext_resource path="res://ui/PauseUI.gd" type="Script" id=33]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1000, 1000 )
@@ -611,6 +613,8 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="PartsBinLayer/Control/ColorRect/ColorRect"]
 anchor_right = 1.0
+margin_left = -1.0
+margin_right = -1.0
 margin_bottom = 76.0
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -676,6 +680,7 @@ __meta__ = {
 }
 
 [node name="MouseLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 layer = 20
 
 [node name="Hand" parent="MouseLayer" instance=ExtResource( 5 )]
@@ -780,6 +785,85 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 6
+
+[node name="WinUI" type="ColorRect" parent="PauseLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.443137 )
+script = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleBG" type="ColorRect" parent="PauseLayer/WinUI"]
+anchor_right = 1.0
+margin_bottom = 116.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseLayer/WinUI/TitleBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 9 )
+text = "PAUSED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="PauseLayer/WinUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 115.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="PauseLayer/WinUI/Control"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 376.0
+margin_bottom = 86.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "CONTINUE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMenu" type="Button" parent="PauseLayer/WinUI/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -118.0
+margin_right = 376.0
+margin_bottom = -47.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "BACK TO MENU"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TutLayer" type="CanvasLayer" parent="."]
 layer = 4
 
@@ -855,14 +939,33 @@ __meta__ = {
 }
 index = -1
 
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDesc0_0"]
+visible = false
+margin_left = 709.777
+margin_top = 173.486
+margin_right = 948.777
+margin_bottom = 240.486
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MissionDesc0_1" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -475.5
-margin_top = 65.379
-margin_right = 475.5
-margin_bottom = 436.379
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 336.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Welcome!
@@ -876,6 +979,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 index = 0
+
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDesc0_1"]
+visible = false
+margin_left = 688.347
+margin_top = 175.867
+margin_right = 927.347
+margin_bottom = 242.867
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MissionDesc0_2" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
@@ -925,10 +1047,10 @@ __meta__ = {
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -475.5
-margin_top = 64.749
-margin_right = 475.5
-margin_bottom = 435.749
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 480.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain, and welcome to your first mission!
@@ -947,6 +1069,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDesc1"]
+visible = false
+margin_left = 681.809
+margin_top = 432.98
+margin_right = 920.809
+margin_bottom = 499.98
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MissionDesc2" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
@@ -954,7 +1095,7 @@ anchor_right = 0.5
 margin_left = -475.0
 margin_top = 65.0
 margin_right = 476.0
-margin_bottom = 354.0
+margin_bottom = 348.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
@@ -971,6 +1112,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDesc2"]
+visible = false
+margin_left = 681.809
+margin_top = 299.893
+margin_right = 920.809
+margin_bottom = 366.893
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MissionDesc3" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
@@ -978,7 +1138,7 @@ anchor_right = 0.5
 margin_left = -475.0
 margin_top = 65.0
 margin_right = 476.0
-margin_bottom = 356.0
+margin_bottom = 392.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
@@ -995,14 +1155,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDesc3"]
+visible = false
+margin_left = 681.809
+margin_top = 342.368
+margin_right = 920.809
+margin_bottom = 409.368
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MissionDesc4" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -475.5
-margin_top = 64.749
-margin_right = 475.5
-margin_bottom = 435.749
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 480.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
@@ -1023,14 +1202,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDesc4"]
+visible = false
+margin_left = 681.809
+margin_top = 426.372
+margin_right = 920.809
+margin_bottom = 493.372
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MissionDescHMI" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -475.0
-margin_top = 65.0
+margin_top = 64.0
 margin_right = 476.0
-margin_bottom = 351.0
+margin_bottom = 347.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
@@ -1047,14 +1245,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDescHMI"]
+visible = false
+margin_left = 681.809
+margin_top = 305.557
+margin_right = 920.809
+margin_bottom = 372.557
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MissionDescHMII" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -475.5
-margin_top = 64.749
-margin_right = 475.5
-margin_bottom = 435.749
+margin_left = -475.0
+margin_top = 65.0
+margin_right = 476.0
+margin_bottom = 546.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
@@ -1077,6 +1294,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDescHMII"]
+visible = false
+margin_left = 681.809
+margin_top = 496.219
+margin_right = 920.809
+margin_bottom = 563.219
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MissionDescSensN" type="Label" parent="TutLayer/Control/Panel"]
 visible = false
 anchor_left = 0.5
@@ -1095,6 +1331,25 @@ If you look at the green corner markings on the Rover View, you may notice that 
 
 It is possible to use the front, left, and right rover sensors to detect these corners. As such, the rover can move forward and, once a corner is detected, rotate to match the correct forward direction."
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="Button" parent="TutLayer/Control/Panel/MissionDescSensN"]
+visible = false
+margin_left = 681.809
+margin_top = 236.654
+margin_right = 920.809
+margin_bottom = 303.654
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "EXIT MISSION"
+script = ExtResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1378,8 +1633,19 @@ which = 1
 [connection signal="pressed" from="WinLayer/WinUI/Control/NextMission" to="WinLayer/WinUI" method="_on_NextMission_pressed"]
 [connection signal="pressed" from="WinLayer/WinUI/Control/Continue" to="WinLayer/WinUI" method="_on_Continue_pressed"]
 [connection signal="pressed" from="WinLayer/WinUI/Control/BackToMenu" to="WinLayer/WinUI" method="_on_BackToMenu_pressed"]
+[connection signal="pressed" from="PauseLayer/WinUI/Control/Continue" to="PauseLayer/WinUI" method="_on_Continue_pressed"]
+[connection signal="pressed" from="PauseLayer/WinUI/Control/BackToMenu" to="PauseLayer/WinUI" method="_on_BackToMenu_pressed"]
 [connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc0_0/TutButton" to="TutLayer/Control/Panel/MissionDesc0_0/TutButton" method="_on_TutButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc0_0/ExitButton" to="TutLayer/Control/Panel/MissionDesc0_0/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc0_1/ExitButton" to="TutLayer/Control/Panel/MissionDesc0_1/ExitButton" method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc0_2/WinButton2" to="TutLayer/Control/Panel/MissionDesc0_2/WinButton2" method="_on_WinButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc1/ExitButton" to="TutLayer/Control/Panel/MissionDesc1/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc2/ExitButton" to="TutLayer/Control/Panel/MissionDesc2/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc3/ExitButton" to="TutLayer/Control/Panel/MissionDesc3/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDesc4/ExitButton" to="TutLayer/Control/Panel/MissionDesc4/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDescHMI/ExitButton" to="TutLayer/Control/Panel/MissionDescHMI/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDescHMII/ExitButton" to="TutLayer/Control/Panel/MissionDescHMII/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="TutLayer/Control/Panel/MissionDescSensN/ExitButton" to="TutLayer/Control/Panel/MissionDescSensN/ExitButton" method="_on_ExitButton_pressed"]
 [connection signal="gui_input" from="TutLayer/Control/TextureRect" to="TutLayer/Control/TextureRect" method="_gui_input"]
 [connection signal="pressed" from="TutLayer/Control/Tut/TutButton" to="TutLayer/Control/Tut/TutButton" method="_on_TutButton_pressed"]
 [connection signal="pressed" from="BackLayer/Tut/TutButton" to="BackLayer/Tut/TutButton" method="_on_TutButton_pressed"]
