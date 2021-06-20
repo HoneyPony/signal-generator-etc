@@ -9,6 +9,9 @@ var colorrect
 
 var target_y = 32
 
+var norm_tex = preload("res://ui/log_grip.svg")
+var alt_tex = preload("res://ui/log_grip_dep.svg")
+
 func _ready():
 	GS.window_with_handle_bottom = self
 	pass
@@ -31,8 +34,20 @@ func calc_target():
 			
 	get_parent().margin_top = needed_margin
 	
-func _process(delta):
+
+func mouse_on_me():
+	var m = get_local_mouse_position()
+	return m.y >= 0 and m.y <= 16
+
+func grip_tex():
+	if mouse_on_me() or dragging:
+		texture = alt_tex
+	else:
+		texture = norm_tex
+		
 	
+func _process(delta):
+	grip_tex()
 	
 	if not Input.is_action_pressed("mouse_click"):
 		dragging = false

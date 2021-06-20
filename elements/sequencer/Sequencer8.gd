@@ -70,7 +70,9 @@ onready var output_jacks = [
 ]
 
 func get_time_setting():
-	var stage = $TimeDial.stage
+	# I've disabled two of the settings because they don't work
+	var disabled_count = 2
+	var stage = $TimeDial.stage + disabled_count
 	
 	var arr = [0.0625, 0.125, 0.25, 0.5, 1, 2, 4]
 	if stage <= 0:

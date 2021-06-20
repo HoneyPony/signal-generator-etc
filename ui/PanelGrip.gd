@@ -11,6 +11,9 @@ var colorrect
 
 var target_x = 32
 
+var norm_tex = preload("res://ui/panel_grip.svg")
+var alt_tex = preload("res://ui/panel_grip_dep.svg")
+
 func _ready():
 	if on_right:
 		GS.window_with_handle_right = self
@@ -54,8 +57,19 @@ func calc_target():
 		get_parent().margin_right = needed_margin
 		colorrect.margin_left = min(-250 + needed_margin - 32, 0)
 
+func mouse_on_me():
+	var m = get_local_mouse_position()
+	return m.x >= 0 and m.x <= 16
+
+func grip_tex():
+	if mouse_on_me() or dragging:
+		texture = alt_tex
+	else:
+		texture = norm_tex
+		
+
 func _process(delta):
-	
+	grip_tex()
 	
 	if not Input.is_action_pressed("mouse_click"):
 		dragging = false

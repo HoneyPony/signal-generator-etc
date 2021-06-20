@@ -88,6 +88,8 @@ var ui_capture_mouse = false
 
 var run_rover = false
 
+var has_loaded_a_scene = false
+
 var rover = null
 
 var won_level = false

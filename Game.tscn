@@ -1402,11 +1402,13 @@ custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.945098, 0.945098, 0.945098, 1 )
 text = "Hello Captain.
 
-Here the rover needs to navigate out of a complicated cave system. However, we are in luck.
+Here the rover needs to navigate out of a complicated cave system. Luckily, the cave has some natural features that will help here.
 
 If you look at the green corner markings on the Rover View, you may notice that they mark out a path to the goal destination, as a series of straight movements and turns.
 
-It is possible to use the front, left, and right rover sensors to detect these corners. As such, the rover can move forward and, once a corner is detected, rotate to match the correct forward direction."
+It is possible to use the front, left, and right rover sensors to detect the rocks that form each of these corners. As such, the rover can move forward and, once a corner is detected, rotate to match the correct forward direction.
+
+It will be best to use the same Sequencer technique as before for generating the Reverse signals for the Motor, except now the signals need to be based on sensor inputs."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

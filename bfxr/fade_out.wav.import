@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fade_out.wav-0b8efd2b7c2356c5f42b5526e017a039.sample"
+
+[deps]
+
+source_file="res://bfxr/fade_out.wav"
+dest_files=[ "res://.import/fade_out.wav-0b8efd2b7c2356c5f42b5526e017a039.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://moon/goal/RoverGoalPosition.tscn" type="PackedScene" id=1]
 [ext_resource path="res://moon/Rover.tscn" type="PackedScene" id=2]
@@ -6,6 +6,109 @@
 [ext_resource path="res://moon/MoonGrid.gd" type="Script" id=4]
 [ext_resource path="res://moon/moon_tex_2.svg" type="Texture" id=5]
 [ext_resource path="res://moon/goal/Garage.tscn" type="PackedScene" id=6]
+[ext_resource path="res://moon/moon_rock_2.svg" type="Texture" id=7]
+[ext_resource path="res://moon/moon_rock_1.svg" type="Texture" id=8]
+[ext_resource path="res://moon/MoonRocks.tscn" type="PackedScene" id=9]
+[ext_resource path="res://moon/moon_rock_3.svg" type="Texture" id=10]
+[ext_resource path="res://moon/moon_rock_4.svg" type="Texture" id=11]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 256, 256, 0, 256, 0, 0, 256, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 256, 256, 0, 256, 0, 0, 256, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 256, 256, 0, 256, 0, 0, 256, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 256, 256, 0, 256, 0, 0, 256, 0 )
+
+[sub_resource type="TileSet" id=5]
+0/name = "moon_rock_1.svg 0"
+0/texture = ExtResource( 8 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 256, 256 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "moon_rock_2.svg 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 256, 256 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 2 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "moon_rock_3.svg 2"
+2/texture = ExtResource( 10 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 256, 256 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 3 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "moon_rock_4.svg 3"
+3/texture = ExtResource( 11 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 256, 256 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 4 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
 
 [node name="Moon" type="Node2D"]
 
@@ -75,3 +178,7 @@ position = Vector2( -27.2474, -500 )
 rotation = -3.14159
 emitting = false
 emit_time = 1.0
+
+[node name="Rocks" parent="." instance=ExtResource( 9 )]
+tile_set = SubResource( 5 )
+tile_data = PoolIntArray( -2752469, 1, 0, -2555927, 1, 0, -2555925, 1, 0, -2555890, 0, 0, -2424883, 0, 0, -2490368, 1, 0, -2490354, 0, 0, -2293796, 1, 0, -2359293, 2, 0, -2162655, 2, 0, -1966115, 2, 0, -1966099, 0, 0, -2031594, 1, 0, -2031573, 0, 0, -2031572, 0, 0, -1900556, 3, 0, -1900555, 3, 0, -1900548, 0, 0, -1835002, 2, 0, -1769414, 2, 0, -1638448, 1, 0, -1703910, 0, 0, -1572902, 0, 0, -1572896, 1, 0, -1572848, 0, 0, -1572833, 2, 0, -1441811, 0, 0, -1376245, 2, 0, -1245197, 0, 0, -1310714, 0, 0, -1310668, 0, 0, -1179703, 2, 0, -1245157, 1, 0, -1245146, 1, 0, -1114115, 2, 0, -983081, 1, 0, -1048572, 0, 0, -1048550, 0, 0, -1048526, 1, 0, -851977, 3, 0, -917489, 1, 0, -917487, 2, 0, -786452, 3, 0, -786433, 1, 0, -851965, 3, 0, -851958, 0, 0, -851945, 0, 0, -851939, 0, 0, -851934, 0, 0, -720924, 0, 0, -786418, 3, 0, -786406, 2, 0, -720889, 3, 0, -589861, 2, 0, -589829, 2, 0, -589825, 1, 0, -655340, 2, 0, -655319, 1, 0, -524302, 0, 0, -458793, 1, 0, -524287, 2, 0, -524259, 0, 0, -524255, 2, 0, -524242, 3, 0, -458716, 0, 0, -327684, 0, 0, -327682, 1, 0, -262168, 1, 0, -327628, 1, 0, -131101, 0, 0, -131075, 2, 0, -65547, 1, 0, -65542, 3, 0, -48, 2, 0, -39, 3, 0, -65501, 2, 0, -65494, 0, 0, 131019, 0, 0, 131064, 0, 0, 196571, 2, 0, 262141, 1, 0, 327672, 2, 0, 262174, 2, 0, 393204, 0, 0, 393250, 1, 0, 524281, 1, 0, 524283, 1, 0, 458797, 3, 0, 589776, 2, 0, 589792, 0, 0, 589821, 3, 0, 524322, 2, 0, 589824, 2, 0, 655379, 2, 0, 655391, 3, 0, 655412, 0, 0, 720896, 1, 0, 720907, 0, 0, 720909, 2, 0, 720913, 3, 0, 720921, 2, 0, 851964, 2, 0, 786434, 2, 0, 917496, 1, 0, 851970, 0, 0, 851989, 0, 0, 851994, 0, 0, 852002, 0, 0, 982991, 3, 0, 983030, 2, 0, 983039, 3, 0, 917515, 0, 0, 917521, 2, 0, 917551, 1, 0, 1048533, 0, 0, 983048, 1, 0, 983069, 1, 0, 1114077, 2, 0, 1114083, 1, 0, 1048598, 3, 0, 1245166, 0, 0, 1310711, 0, 0, 1245185, 2, 0, 1310743, 0, 0, 1310752, 3, 0, 1376294, 0, 0, 1507288, 3, 0, 1572807, 2, 0, 1572808, 2, 0, 1572820, 1, 0, 1572841, 2, 0, 1507379, 0, 0, 1572888, 2, 0, 1638404, 0, 0, 1834993, 1, 0, 1900514, 0, 0, 1900541, 3, 0, 1966118, 2, 0, 2097110, 2, 0, 2097169, 1, 0, 2097199, 2, 0, 2228172, 0, 0, 2228207, 3, 0, 2293733, 2, 0, 2293755, 1, 0, 2293787, 3, 0, 2359325, 2, 0, 2424877, 1, 0, 2621437, 3, 0, 2555910, 0, 0, 2686960, 0, 0, 2621471, 0, 0, 2752469, 1, 0, 2752481, 3, 0 )
